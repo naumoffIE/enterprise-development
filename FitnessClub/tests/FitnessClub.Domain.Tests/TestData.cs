@@ -113,12 +113,16 @@ public static class TestData
     };
     public static List<Hall> Halls { get; } = new()
     {
-        new Hall { ID = "1", Name = "Зал бокса" },
-        new Hall { ID = "2", Name = "Зал фитнеса" },
-        new Hall { ID = "3", Name = "Зал йоги" },
-        new Hall { ID = "4", Name = "Зал пилатеса" },
-        new Hall { ID = "5", Name = "Кросс-фитнес студия" },
-        new Hall { ID = "6", Name = "Зал кардиотренировок" },
+        new Hall { ID = "1",    Name = "Зал бокса" },
+        new Hall { ID = "2",    Name = "Зал фитнеса" },
+        new Hall { ID = "3",    Name = "Зал йоги" },
+        new Hall { ID = "4",    Name = "Зал пилатеса" },
+        new Hall { ID = "5",    Name = "Кросс-фитнес студия" },
+        new Hall { ID = "6",    Name = "Зал кардиотренировок" },
+        new Hall { ID = "7",    Name = "Зал функциональных тренировок" },
+        new Hall { ID = "8",    Name = "Зал групповых тренировок" },
+        new Hall { ID = "9",    Name = "Зал боевых искусств" },
+        new Hall { ID = "10",   Name = "Бассейн" }
     };
     public static List<Booking> Bookings { get; } = new()
     {
@@ -144,6 +148,3 @@ public static class TestData
             DateTime = new DateTime(2024, 8, 13, 17, 0, 0), IsTrial = false }
     };
 }
-
-
-            
