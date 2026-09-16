@@ -5,5 +5,4 @@ public class Booking
     public Hall Hall { get; set; } = null!;
     public DateTime DateTime { get; set; }
     public bool IsTrial { get; set; }
-
 }

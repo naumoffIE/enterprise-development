@@ -1,7 +1,7 @@
 public abstract class Person
 {
-    public string PassportNumber { get; set; } = string.Empty;
-    public string FullName { get; set; } = string.Empty;
+    public required string PassportNumber { get; set; }
+    public required string FullName { get; set; }
     public Gender Gender { get; set; }
     public DateOnly BirthDate { get; set; }
 }
