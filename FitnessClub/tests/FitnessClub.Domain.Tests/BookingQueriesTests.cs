@@ -9,6 +9,9 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
     private readonly DateTime _checkTime = new(2026, 9, 15, 10, 30, 0);
 
     [Fact]
+    /// <summary>
+    /// Вывести информацию о всех тренерах, стаж работы которых не менее 5 лет. 
+    /// </summary>
     public void ExperiencedTrainers_ShouldHaveAtLeast5YearsExperience()
     {
         // Arrange
@@ -20,6 +23,9 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
     }
 
     [Fact]
+    /// <summary>
+    /// Вывести информацию о клиентах, у которых просрочен абонемент, упорядочить по ФИО. 
+    /// </summary>
     public void ClientsWithOverdueSubscriptions_ShouldBeOrderedByFullName()
     {
         //Arrange
@@ -34,6 +40,9 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
         Assert.All(result, c => Assert.True(c.SubscriptionEnd < checkDate));
     }
     [Fact]
+    /// <summary>
+    /// Вывести топ 5 наиболее популярных тренеров.
+    /// </summary>
     public void MostPopularTrainers_ShouldBeOrderedByNumberOfBookings()
     {
         //Arrange
@@ -54,6 +63,9 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
 
     }
     [Fact]
+    /// <summary>
+    /// Проверить, является ли зал доступным для записи в данный момент. 
+    /// </summary>
     public void Hall_ShouldBeUnavailable_WhenBookingOverlapsCheckTime()
     {
         //Arrange
@@ -81,7 +93,9 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
         Assert.Contains(busyHall, result);
     }
     [Fact]
-    //Вывести информацию о занятиях за текущий месяц, проходящих в выбранном зале.
+    /// <summary>
+    /// Вывести информацию о занятиях за текущий месяц, проходящих в выбранном зале.
+    /// </summary>
     public void SessionsInTheChosenHall_ShouldBeFilteredByCurrentMonth()
     {
         //Arrange
