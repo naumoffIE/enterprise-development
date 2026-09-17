@@ -1,3 +1,5 @@
+namespace FitnessClub.Domain;
+
 public class Hall
 {
     public int ID {get; set; } 

@@ -1,3 +1,5 @@
+namespace FitnessClub.Domain;
+
 public enum Gender
 {   
     Male = 1,

@@ -1,10 +1,10 @@
 namespace FitnessClub.Domain.Tests;
 
-public class BookingQueriesTests : IClassFixture<BookingQueriesFixture>
+public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<BookingQueriesFixture>
 {
-    private readonly BookingQueriesFixture _fixture;
+    private readonly BookingQueriesFixture _fixture = fixture;
     private readonly DateTime _checkTime = new(2026, 9, 15, 10, 30, 0);
-    public BookingQueriesTests(BookingQueriesFixture fixture) { _fixture = fixture; }
+
     [Fact]
     public void ExperiencedTrainers_ShouldHaveAtLeast5YearsExperience()
     {

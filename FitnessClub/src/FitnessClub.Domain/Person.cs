@@ -1,3 +1,5 @@
+namespace FitnessClub.Domain;
+
 public abstract class Person
 {
     public required string PassportNumber { get; set; }

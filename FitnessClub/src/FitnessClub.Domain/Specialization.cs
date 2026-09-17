@@ -1,3 +1,5 @@
+namespace FitnessClub.Domain;
+
 public class Specialization
 {
     public int ID { get; set; }

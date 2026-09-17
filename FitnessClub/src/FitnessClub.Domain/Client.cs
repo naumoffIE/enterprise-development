@@ -1,3 +1,5 @@
+namespace FitnessClub.Domain;
+
 public class Client : Person
 {
     public required string PhoneNumber { get; set; }

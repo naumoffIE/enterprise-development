@@ -1,3 +1,5 @@
+namespace FitnessClub.Domain;
+
 public class Booking
 {
     public int ID { get; set; } 

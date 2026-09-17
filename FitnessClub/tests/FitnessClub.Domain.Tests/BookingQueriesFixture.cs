@@ -2,6 +2,12 @@ namespace FitnessClub.Domain.Tests;
 
 public class BookingQueriesFixture
 {
+    /// <summary>
+    /// 
+    /// </summary> <summary>
+    /// 
+    /// </summary>
+    /// <value></value>
     public List<Specialization> Specializations { get; }
     public List<Client> Clients { get; }
     public List<Trainer> Trainers { get; }
