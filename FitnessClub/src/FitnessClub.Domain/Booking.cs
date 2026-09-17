@@ -2,6 +2,9 @@ namespace FitnessClub.Domain;
 
 public class Booking
 {
+    /// <summary>
+    /// Класс для бронирования тренировок
+    /// </summary>
     public int ID { get; set; } 
     public Client Client { get; set; } = null!;
     public Trainer Trainer { get; set; } = null!;

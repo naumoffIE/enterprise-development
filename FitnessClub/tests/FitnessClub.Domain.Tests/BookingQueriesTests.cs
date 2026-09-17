@@ -2,6 +2,9 @@ namespace FitnessClub.Domain.Tests;
 
 public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<BookingQueriesFixture>
 {
+    /// <summary>
+    /// Класс тестов для запросов бронирования
+    /// </summary>
     private readonly BookingQueriesFixture _fixture = fixture;
     private readonly DateTime _checkTime = new(2026, 9, 15, 10, 30, 0);
 
