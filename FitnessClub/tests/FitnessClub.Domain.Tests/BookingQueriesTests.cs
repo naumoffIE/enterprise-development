@@ -39,7 +39,7 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
         Assert.NotEmpty(result);
         Assert.All(result, c => Assert.True(c.SubscriptionEnd < checkDate));
         // Проверяем, что список отсортирован по ФИО, после того как нейронка поругалась
-        for (int i = 0; i < result.Count - 1; i++)
+        for (var i = 0; i < result.Count - 1; i++)
         {
             Assert.True(String.Compare( result[i].FullName,
                                         result[i + 1].FullName, 
@@ -63,7 +63,7 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
         //Assert
         Assert.NotEmpty(result);
         Assert.Equal(5, result.Count);
-        for (int i = 0; i < result.Count - 1; i++)
+        for (var i = 0; i < result.Count - 1; i++)
         {
             Assert.True(result[i].BookingCount >= result[i + 1].BookingCount);
         }
