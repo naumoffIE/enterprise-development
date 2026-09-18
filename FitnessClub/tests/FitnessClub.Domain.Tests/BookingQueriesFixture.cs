@@ -1,10 +1,9 @@
 namespace FitnessClub.Domain.Tests;
-
-public class BookingQueriesFixture
-{
  /// <summary>
  /// Данные для тестов
  /// </summary>
+public class BookingQueriesFixture
+{
     public List<Specialization> Specializations { get; }
     public List<Client> Clients { get; }
     public List<Trainer> Trainers { get; }

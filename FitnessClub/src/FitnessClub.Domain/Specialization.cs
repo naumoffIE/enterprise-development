@@ -1,10 +1,9 @@
 namespace FitnessClub.Domain;
-
+/// <summary>
+/// Класс специализации тренера
+/// </summary>
 public class Specialization
 {
-    /// <summary>
-    /// Класс специализации тренера
-    /// </summary>
     public int ID { get; set; }
     public required string Name { get; set; }
 }

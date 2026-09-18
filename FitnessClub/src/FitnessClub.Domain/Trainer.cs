@@ -1,10 +1,9 @@
 namespace FitnessClub.Domain;
-
+/// <summary>
+/// Класс данных для тренера фитнес клуба
+/// </summary>
 public class Trainer : Person
 {
-    /// <summary>
-    /// Класс данных для тренера фитнес клуба
-    /// </summary>
-    public Specialization Specialization { get; set; } = null!;
+    public required Specialization Specialization { get; set; }
     public int Experience { get; set; }
 }

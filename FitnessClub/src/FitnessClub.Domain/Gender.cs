@@ -1,10 +1,9 @@
 namespace FitnessClub.Domain;
-
+/// <summary>
+/// Мужское женское
+/// </summary>
 public enum Gender
 {   
-    /// <summary>
-    /// Мужское женское
-    /// </summary>
     Male = 1,
     Female = 2
 }
