@@ -42,6 +42,8 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
                                         result[i + 1].FullName, 
                                         StringComparison.Ordinal) <= 0);
         }
+        //Assert.True(result.SequenceEqual(result.OrderBy(c => c.Trainer.FullName, StringComparer.Ordinal)));
+
     }
     /// <summary>
     /// Вывести топ 5 наиболее популярных тренеров.
@@ -64,8 +66,6 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
         {
             Assert.True(result[i].BookingCount >= result[i + 1].BookingCount);
         }
-        //Assert.True(result.SequenceEqual(result.OrderBy(c => c.Trainer.FullName, StringComparer.Ordinal)));
-
     }
     /// <summary>
     /// Проверить, является ли зал доступным для записи в данный момент. 
