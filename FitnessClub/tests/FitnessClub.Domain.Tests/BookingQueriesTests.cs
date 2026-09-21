@@ -12,7 +12,7 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
     [Fact]
     public void ExperiencedTrainers_ShouldHaveAtLeast5YearsExperience()
     {
-        // Arrange
+        //Arrange
         //Act
         var result = _fixture.Trainers.Where(t => t.Experience >= 5).ToList();
         //Assert
@@ -64,6 +64,7 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
         {
             Assert.True(result[i].BookingCount >= result[i + 1].BookingCount);
         }
+        //Assert.True(result.SequenceEqual(result.OrderBy(c => c.Trainer.FullName, StringComparer.Ordinal)));
 
     }
     /// <summary>
