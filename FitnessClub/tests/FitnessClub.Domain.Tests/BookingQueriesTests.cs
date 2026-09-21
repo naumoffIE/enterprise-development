@@ -36,13 +36,14 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
         Assert.NotEmpty(result);
         Assert.All(result, c => Assert.True(c.SubscriptionEnd < checkDate));
         // Проверяем, что список отсортирован по ФИО, после того как нейронка поругалась
-        for (var i = 0; i < result.Count - 1; i++)
-        {
-            Assert.True(String.Compare( result[i].FullName,
-                                        result[i + 1].FullName, 
-                                        StringComparison.Ordinal) <= 0);
-        }
-        //Assert.True(result.SequenceEqual(result.OrderBy(c => c.Trainer.FullName, StringComparer.Ordinal)));
+        // for (var i = 0; i < result.Count - 1; i++)
+        // {
+        //     Assert.True(String.Compare( result[i].FullName,
+        //                                 result[i + 1].FullName, 
+        //                                 StringComparison.Ordinal) <= 0);
+        // }
+        // буквально то же самое, но в 1 строчку
+        Assert.True(result.SequenceEqual(result.OrderBy(c => c.FullName, StringComparer.Ordinal)));
 
     }
     /// <summary>
