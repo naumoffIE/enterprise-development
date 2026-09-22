@@ -118,7 +118,7 @@ public class BookingQueriesFixture
                 Specialization = Specializations[6],
                 Experience = 10,
                 Gender = Gender.Male, BirthDate = new DateOnly(2000, 7, 10) },
-            new Trainer { PassportNumber = "8901 234567", FullName = "Ярослав Юрьевич Дронов",
+            new Trainer { PassportNumber = "8901 234567", FullName = "Ярослав Юрьевич Дронов", //шаман
                 Specialization = Specializations[7],
                 Experience = 5,
                 Gender = Gender.Male, BirthDate = new DateOnly(1991, 11, 22) },
