@@ -206,7 +206,13 @@ public class BookingQueriesFixture
             new Booking { Client = Clients[1], Trainer = Trainers[2], Hall = Halls[2],
                 DateTime = new DateTime(2026, 3, 5, 11, 0, 0), IsTrial = false },
             new Booking { Client = Clients[3], Trainer = Trainers[6], Hall = Halls[6],
-                DateTime = new DateTime(2026, 4, 1, 15, 0, 0), IsTrial = false }
+                DateTime = new DateTime(2026, 4, 1, 15, 0, 0), IsTrial = false },
+            new Booking { Client = Clients[4], Trainer = Trainers[3], Hall = Halls[6],
+                DateTime = new DateTime(2026, 5, 10, 16, 0, 0), IsTrial = false },
+            new Booking { Client = Clients[5], Trainer = Trainers[3], Hall = Halls[6],
+                DateTime = new DateTime(2026, 6, 15, 17, 0, 0), IsTrial = false },
+            new Booking { Client = Clients[6], Trainer = Trainers[3], Hall = Halls[6],
+                DateTime = new DateTime(2026, 7, 20, 18, 0, 0), IsTrial = false },
         ];
     }
 }
