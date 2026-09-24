@@ -5,10 +5,25 @@ namespace FitnessClub.Domain.Tests;
 /// </summary>
 public class BookingQueriesFixture
 {
+    /// <summary>
+    /// Список специализаций
+    /// </summary>
     public List<Specialization> Specializations { get; }
+    /// <summary>
+    /// Список клиентов
+    /// </summary>
     public List<Client> Clients { get; }
+    /// <summary>
+    /// Список тренеров
+    /// </summary>
     public List<Trainer> Trainers { get; }
+    /// <summary>
+    /// Список залов для тренировок
+    /// </summary>
     public List<Hall> Halls { get; }
+    /// <summary>
+    /// Список броней на тренировки
+    /// </summary>
     public List<Booking> Bookings { get; }
 
     public BookingQueriesFixture()
@@ -115,46 +130,66 @@ public class BookingQueriesFixture
         ];
         Trainers =
         [
-            new Trainer { PassportNumber = "1234 567890", FullName = "Золотов Иван Сергеевич",
+            new Trainer { PassportNumber = "1234 567890",
+                FullName = "Золотов Иван Сергеевич",
                 Specialization = Specializations[0],
                 Experience = 5,
-                Gender = Gender.Male, BirthDate = new DateOnly(1985, 12, 10) },
-            new Trainer { PassportNumber = "2345 678901", FullName = "Кондратьева Екатерина Алексеевна",
+                Gender = Gender.Male,
+                BirthDate = new DateOnly(1985, 12, 10) },
+            new Trainer { PassportNumber = "2345 678901",
+                FullName = "Кондратьева Екатерина Алексеевна",
                 Specialization = Specializations[1],
                 Experience = 3,
-                Gender = Gender.Female, BirthDate = new DateOnly(1996, 2, 14) },
-            new Trainer { PassportNumber = "3456 789012", FullName = "Смирнов Алексей Владимирович",
+                Gender = Gender.Female,
+                BirthDate = new DateOnly(1996, 2, 14) },
+            new Trainer { PassportNumber = "3456 789012",
+                FullName = "Смирнов Алексей Владимирович",
                 Specialization = Specializations[2],
                 Experience = 7,
-                Gender = Gender.Male, BirthDate = new DateOnly(1988, 7, 16) },
-            new Trainer { PassportNumber = "4567 890123", FullName = "Голубочкин Дмитрий Олегович",
+                Gender = Gender.Male,
+                BirthDate = new DateOnly(1988, 7, 16) },
+            new Trainer { PassportNumber = "4567 890123",
+                FullName = "Голубочкин Дмитрий Олегович",
                 Specialization = Specializations[3],
                 Experience = 35,
-                Gender = Gender.Male, BirthDate = new DateOnly(1969, 9, 26) },
-            new Trainer { PassportNumber = "5678 901234", FullName = "Кузнецова Анастасия Сергеевна",
+                Gender = Gender.Male,
+                BirthDate = new DateOnly(1969, 9, 26) },
+            new Trainer { PassportNumber = "5678 901234",
+                FullName = "Кузнецова Анастасия Сергеевна",
                 Specialization = Specializations[4],
                 Experience = 2,
-                Gender = Gender.Female, BirthDate = new DateOnly(1995, 11, 12) },
-            new Trainer { PassportNumber = "6789 012345", FullName = "Петрова Мария Владимировна",
+                Gender = Gender.Female,
+                BirthDate = new DateOnly(1995, 11, 12) },
+            new Trainer { PassportNumber = "6789 012345",
+                FullName = "Петрова Мария Владимировна",
                 Specialization = Specializations[5],
                 Experience = 14,
-                Gender = Gender.Female, BirthDate = new DateOnly(1980, 12, 15) },
-            new Trainer { PassportNumber = "7890 123456", FullName = "Иванов Евстафий Алексеевич",
+                Gender = Gender.Female,
+                BirthDate = new DateOnly(1980, 12, 15) },
+            new Trainer { PassportNumber = "7890 123456",
+                FullName = "Иванов Евстафий Алексеевич",
                 Specialization = Specializations[6],
                 Experience = 10,
-                Gender = Gender.Male, BirthDate = new DateOnly(2000, 7, 10) },
-            new Trainer { PassportNumber = "8901 234567", FullName = "Ярослав Юрьевич Дронов", //шаман
+                Gender = Gender.Male,
+                BirthDate = new DateOnly(2000, 7, 10) },
+            new Trainer { PassportNumber = "8901 234567",
+                FullName = "Ярослав Юрьевич Дронов", //шаман
                 Specialization = Specializations[7],
                 Experience = 5,
-                Gender = Gender.Male, BirthDate = new DateOnly(1991, 11, 22) },
-            new Trainer { PassportNumber = "9012 345678", FullName = "Сергеев Алексей Владимирович",
+                Gender = Gender.Male,
+                BirthDate = new DateOnly(1991, 11, 22) },
+            new Trainer { PassportNumber = "9012 345678",
+                FullName = "Сергеев Алексей Владимирович",
                 Specialization = Specializations[8],
                 Experience = 12,
-                Gender = Gender.Male, BirthDate = new DateOnly(1990, 3, 5) },
-            new Trainer { PassportNumber = "0123 456789", FullName = "Александрова Мария Сергеевна",
+                Gender = Gender.Male,
+                BirthDate = new DateOnly(1990, 3, 5) },
+            new Trainer { PassportNumber = "0123 456789",
+                FullName = "Александрова Мария Сергеевна",
                 Specialization = Specializations[9],
                 Experience = 6,
-                Gender = Gender.Female, BirthDate = new DateOnly(1991, 12, 26) }
+                Gender = Gender.Female,
+                BirthDate = new DateOnly(1991, 12, 26) }
         ];
         Halls =
         [
