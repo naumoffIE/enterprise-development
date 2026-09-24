@@ -53,7 +53,6 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
             .Where(c => c.SubscriptionEnd < checkDate)
             .OrderBy(c => c.FullName)
             .ToList();
-        //foreach (var c in result) Console.WriteLine($"\"{c.FullName}\",");
         //Assert
         Assert.NotEmpty(result);
         Assert.Equal(expectedFullNames, result.Select(c => c.FullName));
@@ -82,7 +81,6 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
             .OrderByDescending(t => t.BookingCount)
             .Take(5)
             .ToList();
-        //foreach (var b in result) Console.WriteLine($"\"{b.Trainer.FullName}\", \"{b.BookingCount}\",");
         //Assert
         Assert.NotEmpty(result);
         Assert.Equal(expectedFullNames, result.Select(b => b.Trainer.FullName));
