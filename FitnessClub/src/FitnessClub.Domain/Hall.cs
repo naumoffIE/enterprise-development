@@ -7,7 +7,7 @@ public class Hall
     /// <summary>
     /// ID зала
     /// </summary>
-    public required int Id {get; set; } 
+    public required int Id { get; set; }
     /// <summary>
     /// Название зала
     /// </summary>

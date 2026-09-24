@@ -1,7 +1,8 @@
 namespace FitnessClub.Domain.Tests;
- /// <summary>
- /// Данные для тестов
- /// </summary>
+
+/// <summary>
+/// Данные для тестов
+/// </summary>
 public class BookingQueriesFixture
 {
     public List<Specialization> Specializations { get; }
@@ -12,86 +13,110 @@ public class BookingQueriesFixture
 
     public BookingQueriesFixture()
     {
-        Specializations = 
+        Specializations =
         [
-            new Specialization { ID = 1,  Name = "Йога" },
-            new Specialization { ID = 2,  Name = "Пилатес" },
-            new Specialization { ID = 3,  Name = "Силовые тренировки" },
-            new Specialization { ID = 4,  Name = "Кардиотренировки" },
-            new Specialization { ID = 5,  Name = "Функциональные тренировки" },
-            new Specialization { ID = 6,  Name = "Группа здоровья" },
-            new Specialization { ID = 7,  Name = "Кросс-фитнес" },
-            new Specialization { ID = 8,  Name = "Фитнес для начинающих" },
-            new Specialization { ID = 9,  Name = "Боевые искусства" },
-            new Specialization { ID = 10, Name = "Плавание" }
+            new Specialization { Id = 1,  Name = "Йога" },
+            new Specialization { Id = 2,  Name = "Пилатес" },
+            new Specialization { Id = 3,  Name = "Силовые тренировки" },
+            new Specialization { Id = 4,  Name = "Кардиотренировки" },
+            new Specialization { Id = 5,  Name = "Функциональные тренировки" },
+            new Specialization { Id = 6,  Name = "Группа здоровья" },
+            new Specialization { Id = 7,  Name = "Кросс-фитнес" },
+            new Specialization { Id = 8,  Name = "Фитнес для начинающих" },
+            new Specialization { Id = 9,  Name = "Боевые искусства" },
+            new Specialization { Id = 10, Name = "Плавание" }
         ];
         Clients =
         [
-            new Client { PassportNumber = "2222 222222", FullName = "Петрова Мария Сергеевна",
-                Gender = Gender.Female, BirthDate = new DateOnly(1995, 3, 20),
+            new Client { PassportNumber = "2222 222222",
+                FullName = "Петрова Мария Сергеевна",
+                Gender = Gender.Female,
+                BirthDate = new DateOnly(1995, 3, 20),
                 PhoneNumber = "+7 900 111-22-33",
                 SubscriptionStart = new DateOnly(2026, 1, 1),
                 SubscriptionEnd = new DateOnly(2026, 12, 31) },
-            new Client { PassportNumber = "3333 333333", FullName = "Сидоров Алексей Иванович",
-                Gender = Gender.Male, BirthDate = new DateOnly(1988, 7, 15),
+            new Client { PassportNumber = "3333 333333",
+                FullName = "Сидоров Алексей Иванович",
+                Gender = Gender.Male,
+                BirthDate = new DateOnly(1988, 7, 15),
                 PhoneNumber = "+7 900 222-33-44",
                 SubscriptionStart = new DateOnly(2026, 3, 19),
                 SubscriptionEnd = new DateOnly(2026, 9, 19) },
-            new Client { PassportNumber = "4444 444444", FullName = "Кузнецова Елена Владимировна",
-                Gender = Gender.Female, BirthDate = new DateOnly(1992, 11, 5),
+            new Client { PassportNumber = "4444 444444",
+                FullName = "Кузнецова Елена Владимировна",
+                Gender = Gender.Female,
+                BirthDate = new DateOnly(1992, 11, 5),
                 PhoneNumber = "+7 900 333-44-55",
                 SubscriptionStart = new DateOnly(2025, 9, 11),
                 SubscriptionEnd = new DateOnly(2026, 1, 1) },
-            new Client { PassportNumber = "5555 555555", FullName = "Иванов Иван Иванович",
-                Gender = Gender.Male, BirthDate = new DateOnly(1985, 12, 10),
+            new Client { PassportNumber = "5555 555555",
+                FullName = "Иванов Иван Иванович",
+                Gender = Gender.Male,
+                BirthDate = new DateOnly(1985, 12, 10),
                 PhoneNumber = "+7 900 444-55-66",
                 SubscriptionStart = new DateOnly(2026, 1, 1),
                 SubscriptionEnd = new DateOnly(2027, 1, 1) },
-            new Client { PassportNumber = "6666 666666", FullName = "Смирнова Анна Пампамовна",
-                Gender = Gender.Female, BirthDate = new DateOnly(1990, 5, 25),
+            new Client { PassportNumber = "6666 666666",
+                FullName = "Смирнова Анна Пампамовна",
+                Gender = Gender.Female,
+                BirthDate = new DateOnly(1990, 5, 25),
                 PhoneNumber = "+7 900 555-66-77",
                 SubscriptionStart = new DateOnly(2025, 1, 1),
                 SubscriptionEnd = new DateOnly(2025, 6, 30) },
-            new Client { PassportNumber = "7777 777777", FullName = "Козлов Дмитрий Сергеевич",
-                Gender = Gender.Male, BirthDate = new DateOnly(2010, 8, 30),
+            new Client { PassportNumber = "7777 777777",
+                FullName = "Козлов Дмитрий Сергеевич",
+                Gender = Gender.Male,
+                BirthDate = new DateOnly(2010, 8, 30),
                 PhoneNumber = "+7 900 666-77-88",
                 SubscriptionStart = new DateOnly(2026, 6, 1),
                 SubscriptionEnd = new DateOnly(2026, 12, 31) },
-            new Client { PassportNumber = "8888 888888", FullName = "Васильева Ольга Николаевна",
-                Gender = Gender.Female, BirthDate = new DateOnly(1968, 2, 14),
+            new Client { PassportNumber = "8888 888888",
+                FullName = "Васильева Ольга Николаевна",
+                Gender = Gender.Female,
+                BirthDate = new DateOnly(1968, 2, 14),
                 PhoneNumber = "+7 900 777-88-99",
                 SubscriptionStart = new DateOnly(2026, 5, 29),
                 SubscriptionEnd = new DateOnly(2026, 12, 21) },
-            new Client { PassportNumber = "9999 999999", FullName = "Морозов Сергей Владимирович",
-                Gender = Gender.Male, BirthDate = new DateOnly(1975, 9, 3),
+            new Client { PassportNumber = "9999 999999",
+                FullName = "Морозов Сергей Владимирович",
+                Gender = Gender.Male,
+                BirthDate = new DateOnly(1975, 9, 3),
                 PhoneNumber = "+7 900 888-99-00",
                 SubscriptionStart = new DateOnly(2026, 10, 13),
                 SubscriptionEnd = new DateOnly(2029, 4, 5) },
-            new Client { PassportNumber = "1010 101010", FullName = "Криштиану Роналду Алексеевич",
-                Gender = Gender.Male, BirthDate = new DateOnly(1985, 2, 14),
+            new Client { PassportNumber = "1010 101010",
+                FullName = "Криштиану Роналду Алексеевич",
+                Gender = Gender.Male,
+                BirthDate = new DateOnly(1985, 2, 14),
                 PhoneNumber = "+7 900 999-00-11",
                 SubscriptionStart = new DateOnly(2020, 1, 1),
                 SubscriptionEnd = new DateOnly(2026, 10, 22) },
-            new Client { PassportNumber = "1111 111111", FullName = "Месси Лионель Андреевич",
-                Gender = Gender.Male, BirthDate = new DateOnly(1987, 6, 24),
+            new Client { PassportNumber = "1111 111111",
+                FullName = "Месси Лионель Андреевич",
+                Gender = Gender.Male,
+                BirthDate = new DateOnly(1987, 6, 24),
                 PhoneNumber = "+7 900 000-11-22",
                 SubscriptionStart = new DateOnly(2024, 8, 13),
                 SubscriptionEnd = new DateOnly(2026, 11, 9) },
-            new Client { PassportNumber = "1212 121212", FullName = "Бурдюк Артем Сергеевич",
-                Gender = Gender.Male, BirthDate = new DateOnly(1992, 2, 5),
+            new Client { PassportNumber = "1212 121212",
+                FullName = "Бурдюк Артем Сергеевич",
+                Gender = Gender.Male,
+                BirthDate = new DateOnly(1992, 2, 5),
                 PhoneNumber = "+7 900 111-22-33",
                 SubscriptionStart = new DateOnly(2025, 9, 15),
                 SubscriptionEnd = new DateOnly(2025, 9, 16) },
-            new Client { PassportNumber = "1313 131313", FullName = "А Анастасия Владимировна",
-                Gender = Gender.Female, BirthDate = new DateOnly(1995, 12, 10),
+            new Client { PassportNumber = "1313 131313",
+                FullName = "А Анастасия Владимировна",
+                Gender = Gender.Female,
+                BirthDate = new DateOnly(1995, 12, 10),
                 PhoneNumber = "+7 900 222-33-44",
                 SubscriptionStart = new DateOnly(2024, 9, 15),
                 SubscriptionEnd = new DateOnly(2025, 3, 27) }
         ];
         Trainers =
         [
-            new Trainer { PassportNumber = "1234 567890", FullName = "Золотов Иван Сергеевич", 
-                Specialization = Specializations[0], 
+            new Trainer { PassportNumber = "1234 567890", FullName = "Золотов Иван Сергеевич",
+                Specialization = Specializations[0],
                 Experience = 5,
                 Gender = Gender.Male, BirthDate = new DateOnly(1985, 12, 10) },
             new Trainer { PassportNumber = "2345 678901", FullName = "Кондратьева Екатерина Алексеевна",
@@ -133,16 +158,16 @@ public class BookingQueriesFixture
         ];
         Halls =
         [
-            new Hall { ID = 1,    Name = "Зал бокса" },
-            new Hall { ID = 2,    Name = "Зал фитнеса" },
-            new Hall { ID = 3,    Name = "Зал йоги" },
-            new Hall { ID = 4,    Name = "Зал пилатеса" },
-            new Hall { ID = 5,    Name = "Кросс-фитнес студия" },
-            new Hall { ID = 6,    Name = "Зал кардиотренировок" },
-            new Hall { ID = 7,    Name = "Зал функциональных тренировок" },
-            new Hall { ID = 8,    Name = "Зал групповых тренировок" },
-            new Hall { ID = 9,    Name = "Зал боевых искусств" },
-            new Hall { ID = 10,   Name = "Бассейн" }
+            new Hall { Id = 1, Name = "Зал бокса" },
+            new Hall { Id = 2, Name = "Зал фитнеса" },
+            new Hall { Id = 3, Name = "Зал йоги" },
+            new Hall { Id = 4, Name = "Зал пилатеса" },
+            new Hall { Id = 5, Name = "Кросс-фитнес студия" },
+            new Hall { Id = 6, Name = "Зал кардиотренировок" },
+            new Hall { Id = 7, Name = "Зал функциональных тренировок" },
+            new Hall { Id = 8, Name = "Зал групповых тренировок" },
+            new Hall { Id = 9, Name = "Зал боевых искусств" },
+            new Hall { Id = 10, Name = "Бассейн" }
         ];
         Bookings =
         [

@@ -56,7 +56,7 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
         //Act
         var result = _fixture.Bookings
             .GroupBy(b => b.Trainer)
-            .Select(g => new { Trainer = g.Key, BookingCount = g.Count()})
+            .Select(g => new { Trainer = g.Key, BookingCount = g.Count() })
             .OrderByDescending(t => t.BookingCount)
             .Take(5)
             .ToList();
@@ -87,11 +87,11 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
             IsTrial = false
         };
 
-        List<Booking> bookingsList = [.._fixture.Bookings, overlappingBooking];
+        List<Booking> bookingsList = [.. _fixture.Bookings, overlappingBooking];
         //Act
         var result = bookingsList
-            .Where(b => b.DateTime < checkTime  + Booking.Duration && 
-                        checkTime  < b.DateTime + Booking.Duration)
+            .Where(b => b.DateTime < checkTime + Booking.Duration &&
+                        checkTime < b.DateTime + Booking.Duration)
             .Select(h => h.Hall)
             .ToList();
         //Assert
@@ -109,8 +109,8 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
         var chosenHall = _fixture.Halls[0];
         //Act
         var result = _fixture.Bookings
-            .Where(b => b.Hall == chosenHall && 
-                        b.DateTime.Month == checkDate.Month && 
+            .Where(b => b.Hall == chosenHall &&
+                        b.DateTime.Month == checkDate.Month &&
                         b.DateTime.Year == checkDate.Year)
             .ToList();
         //Assert

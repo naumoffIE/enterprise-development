@@ -7,7 +7,7 @@ public class Booking
     /// <summary>
     /// ID брони
     /// </summary>
-    public int Id { get; set; } 
+    public int Id { get; set; }
     /// <summary>
     /// Клиент, забронировавший тренировку
     /// </summary>
