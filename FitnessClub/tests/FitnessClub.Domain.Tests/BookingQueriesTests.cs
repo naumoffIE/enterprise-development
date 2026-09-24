@@ -2,9 +2,12 @@ namespace FitnessClub.Domain.Tests;
 /// <summary>
 /// Класс тестов для запросов бронирования
 /// </summary>
+/// 
 public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<BookingQueriesFixture>
 {
-    private readonly BookingQueriesFixture _fixture = fixture;
+    /// <summary>
+    /// Зафиксированный момент времени
+    /// </summary>
     private readonly DateTime _checkTime = new(2026, 9, 15, 10, 30, 0);
     /// <summary>
     /// Вывести информацию о всех тренерах, стаж работы которых не менее 5 лет. 
@@ -13,11 +16,22 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
     public void ExperiencedTrainers_ShouldHaveAtLeast5YearsExperience()
     {
         //Arrange
+        var expectedFullNames = new[]
+        {
+            fixture.Trainers[0].FullName,
+            fixture.Trainers[2].FullName,
+            fixture.Trainers[3].FullName,
+            fixture.Trainers[5].FullName,
+            fixture.Trainers[6].FullName,
+            fixture.Trainers[7].FullName,
+            fixture.Trainers[8].FullName,
+            fixture.Trainers[9].FullName
+        };
         //Act
-        var result = _fixture.Trainers.Where(t => t.Experience >= 5).ToList();
+        var result = fixture.Trainers.Where(t => t.Experience >= 5).ToList();
         //Assert
         Assert.NotEmpty(result);
-        Assert.All(result, t => Assert.True(t.Experience >= 5));
+        Assert.Equal(expectedFullNames, result.Select(t => t.FullName));
     }
     /// <summary>
     /// Вывести информацию о клиентах, у которых просрочен абонемент, упорядочить по ФИО. 
@@ -27,23 +41,23 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
     {
         //Arrange
         var checkDate = DateOnly.FromDateTime(_checkTime.Date);
+        var expectedFullNames = new[]
+        {
+            fixture.Clients[11].FullName,
+            fixture.Clients[10].FullName,
+            fixture.Clients[2].FullName,
+            fixture.Clients[4].FullName
+        };
         //Act
-        var result = _fixture.Clients
+        var result = fixture.Clients
             .Where(c => c.SubscriptionEnd < checkDate)
             .OrderBy(c => c.FullName)
             .ToList();
+        //foreach (var c in result) Console.WriteLine($"\"{c.FullName}\",");
         //Assert
         Assert.NotEmpty(result);
-        Assert.All(result, c => Assert.True(c.SubscriptionEnd < checkDate));
-        // Проверяем, что список отсортирован по ФИО, после того как нейронка поругалась
-        // for (var i = 0; i < result.Count - 1; i++)
-        // {
-        //     Assert.True(String.Compare( result[i].FullName,
-        //                                 result[i + 1].FullName, 
-        //                                 StringComparison.Ordinal) <= 0);
-        // }
-        // буквально то же самое, но в 1 строчку
-        Assert.True(result.SequenceEqual(result.OrderBy(c => c.FullName, StringComparer.Ordinal)));
+        Assert.Equal(expectedFullNames, result.Select(c => c.FullName));
+        //Assert.True(result.SequenceEqual(result.OrderBy(c => c.FullName, StringComparer.Ordinal)));
 
     }
     /// <summary>
@@ -54,7 +68,7 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
     {
         //Arrange
         //Act
-        var result = _fixture.Bookings
+        var result = fixture.Bookings
             .GroupBy(b => b.Trainer)
             .Select(g => new { Trainer = g.Key, BookingCount = g.Count() })
             .OrderByDescending(t => t.BookingCount)
@@ -76,20 +90,9 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
     {
         //Arrange
         var checkTime = _checkTime;
-        var busyHall = _fixture.Halls[4];
-        //на всякий случай, чтобы точно что-то пересеклось + изолировать эту бронь от других тестов
-        var overlappingBooking = new Booking
-        {
-            Client = _fixture.Clients[0],
-            Trainer = _fixture.Trainers[0],
-            Hall = busyHall,
-            DateTime = checkTime.AddMinutes(-30),
-            IsTrial = false
-        };
-
-        List<Booking> bookingsList = [.. _fixture.Bookings, overlappingBooking];
+        var busyHall = fixture.Halls[4];
         //Act
-        var result = bookingsList
+        var result = fixture.Bookings
             .Where(b => b.DateTime < checkTime + Booking.Duration &&
                         checkTime < b.DateTime + Booking.Duration)
             .Select(h => h.Hall)
@@ -106,9 +109,9 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
     {
         //Arrange
         var checkDate = DateOnly.FromDateTime(_checkTime.Date);
-        var chosenHall = _fixture.Halls[0];
+        var chosenHall = fixture.Halls[0];
         //Act
-        var result = _fixture.Bookings
+        var result = fixture.Bookings
             .Where(b => b.Hall == chosenHall &&
                         b.DateTime.Month == checkDate.Month &&
                         b.DateTime.Year == checkDate.Year)
@@ -118,5 +121,25 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
         Assert.All(result, b => Assert.Equal(chosenHall, b.Hall));
         Assert.All(result, b => Assert.Equal(checkDate.Month, b.DateTime.Month));
         Assert.All(result, b => Assert.Equal(checkDate.Year, b.DateTime.Year));
+    }
+    /// <summary>
+    /// Проверить, занят ли зал на указанное время проверки.
+    /// Время проверки задаётся полем <c>_checkTime</c>.
+    /// </summary>
+    [Fact]
+    public void Hall_ShouldBeOccupied_WhenBookingOverlapsCheckTime()
+    {
+        //Arrange
+        var checkTime = _checkTime;
+        var busyHall = fixture.Halls[4];
+        //Act
+        var result = fixture.Bookings
+            .Where(b => b.DateTime < checkTime + Booking.Duration &&
+                        checkTime < b.DateTime + Booking.Duration)
+            .Select(h => h.Hall)
+            .ToList();
+        //Assert
+        Assert.NotEmpty(result);
+        Assert.Contains(busyHall, result);
     }
 }
