@@ -56,8 +56,6 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
         //Assert
         Assert.NotEmpty(result);
         Assert.Equal(expectedFullNames, result.Select(c => c.FullName));
-        //Assert.True(result.SequenceEqual(result.OrderBy(c => c.FullName, StringComparer.Ordinal)));
-
     }
     /// <summary>
     /// Вывести топ 5 наиболее популярных тренеров.
