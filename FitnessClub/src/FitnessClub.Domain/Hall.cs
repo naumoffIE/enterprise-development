@@ -4,6 +4,12 @@ namespace FitnessClub.Domain;
 /// </summary>
 public class Hall
 {
-    public required int ID {get; set; } 
+    /// <summary>
+    /// ID зала
+    /// </summary>
+    public required int Id {get; set; } 
+    /// <summary>
+    /// Название зала
+    /// </summary>
     public required string Name { get; set; }
 }
