@@ -123,7 +123,6 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
                         b.DateTime.Month == checkDate.Month &&
                         b.DateTime.Year == checkDate.Year)
             .ToList();
-        foreach (var b in result) Console.WriteLine($"\"{b.DateTime}\", ");
         //Assert
         Assert.NotEmpty(result);
         Assert.Equal(expectedBookingIds, result.Select(b => b.Id));
