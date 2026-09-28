@@ -29,9 +29,11 @@ public class Booking
     /// </summary>
     public bool IsTrial { get; set; }
 
-    //в задании не было, но мне кажется стоит добавить
     /// <summary>
     /// Длительность тренировки (1 час сделал)
     /// </summary>
+    /// <remarks>
+    /// потом будет не статик
+    /// </remarks>
     public static readonly TimeSpan Duration = TimeSpan.FromHours(1);
 }
