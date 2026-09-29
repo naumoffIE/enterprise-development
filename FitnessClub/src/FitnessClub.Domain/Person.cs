@@ -20,4 +20,8 @@ public abstract class Person
     /// Дата рождения
     /// </summary>
     public DateOnly BirthDate { get; set; }
+    /// <summary>
+    /// Номер телефона
+    /// </summary>
+    public string? PhoneNumber { get; set; }
 }

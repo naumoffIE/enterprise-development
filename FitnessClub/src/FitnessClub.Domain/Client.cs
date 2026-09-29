@@ -5,10 +5,6 @@ namespace FitnessClub.Domain;
 public class Client : Person
 {
     /// <summary>
-    /// Номер телефона клиента
-    /// </summary>
-    public required string PhoneNumber { get; set; }
-    /// <summary>
     /// Начало абонемента
     /// </summary>
     public DateOnly SubscriptionStart { get; set; }
