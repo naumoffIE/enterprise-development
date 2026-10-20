@@ -1,13 +1,9 @@
-namespace FitnessClub.Domain;
+namespace FitnessClub.Domain.Entities;
 /// <summary>
 /// Класс специализации тренера
 /// </summary>
-public class Specialization
+public class Specialization : Entity
 {
-    /// <summary>
-    /// ID специализации
-    /// </summary>
-    public int Id { get; set; }
     /// <summary>
     /// Название специализации
     /// </summary>

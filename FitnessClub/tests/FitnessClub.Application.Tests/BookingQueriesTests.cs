@@ -80,7 +80,7 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
             .Take(5)
             .ToList();
         //Assert
-        Assert.NotEmpty(result);
+        Assert.NotEmpty(result); // убрать нахер
         Assert.Equal(expectedFullNames, result.Select(b => b.Trainer.FullName));
     }
     /// <summary>

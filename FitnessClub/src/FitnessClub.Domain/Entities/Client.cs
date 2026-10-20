@@ -1,4 +1,4 @@
-namespace FitnessClub.Domain;
+namespace FitnessClub.Domain.Entities;
 /// <summary>
 /// Класс данных для клиента фитнес клуба
 /// </summary>

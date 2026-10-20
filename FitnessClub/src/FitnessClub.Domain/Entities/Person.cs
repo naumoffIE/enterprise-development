@@ -1,8 +1,8 @@
-namespace FitnessClub.Domain;
+namespace FitnessClub.Domain.Entities;
 /// <summary>
 /// Класс для представления человека
 /// </summary>
-public abstract class Person
+public abstract class Person : Entity
 {
     /// <summary>
     /// Номер паспорта

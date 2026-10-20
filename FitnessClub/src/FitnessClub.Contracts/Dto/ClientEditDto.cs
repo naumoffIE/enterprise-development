@@ -1,0 +1,1 @@
+namespace FitnessClub.Contracts.Dto;

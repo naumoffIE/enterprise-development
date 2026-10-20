@@ -1,13 +1,9 @@
-namespace FitnessClub.Domain;
+namespace FitnessClub.Domain.Entities;
 /// <summary>
 /// Класс для бронирования тренировок
 /// </summary>
-public class Booking
+public class Booking : Entity
 {
-    /// <summary>
-    /// ID брони
-    /// </summary>
-    public int Id { get; set; }
     /// <summary>
     /// Клиент, забронировавший тренировку
     /// </summary>

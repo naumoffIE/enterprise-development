@@ -3,6 +3,6 @@
     <Project Path="src/FitnessClub.Domain/FitnessClub.Domain.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests/FitnessClub.Domain.Tests/FitnessClub.Domain.Tests.csproj" />
+    <Project Path="tests/FitnessClub.Application.Tests/FitnessClub.Application.Tests.csproj" />
   </Folder>
 </Solution>

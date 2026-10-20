@@ -1,13 +1,9 @@
-namespace FitnessClub.Domain;
+namespace FitnessClub.Domain.Entities;
 /// <summary>
 /// Класс зала тренировок
 /// </summary>
-public class Hall
+public class Hall : Entity
 {
-    /// <summary>
-    /// ID зала
-    /// </summary>
-    public int Id { get; set; }
     /// <summary>
     /// Название зала
     /// </summary>
