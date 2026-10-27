@@ -1,3 +1,6 @@
+using FitnessClub.Domain.Entities;
+using FitnessClub.Domain.Interfaces;
+
 namespace FitnessClub.Infrastructure.InMemory.Repositories;
 public class InMemoryRepository<TEntity> : IRepository<TEntity> where TEntity : Entity
 {
@@ -14,13 +17,14 @@ public class InMemoryRepository<TEntity> : IRepository<TEntity> where TEntity : 
         _items.Add(entity);
         return Task.FromResult(entity);
     }
-    public Task<bool> UpdateAsync(TEntity entity)
+    public Task<TEntity?> UpdateAsync(TEntity entity)
     {
         var index = _items.FindIndex(e => e.Id == entity.Id);
         if (index < 0)
-            return Task.FromResult(false);
+            return Task.FromResult<TEntity?>(null);
+
         _items[index] = entity;
-        return Task.FromResult(true);
+        return Task.FromResult<TEntity?>(entity);
     }
     public Task<bool> DeleteAsync(int id)
     {
@@ -30,4 +34,4 @@ public class InMemoryRepository<TEntity> : IRepository<TEntity> where TEntity : 
         _items.Remove(entity);
         return Task.FromResult(true);
     }
-} 
+} // нахуя а главное зачем в лекциях делали кучу инмемори репозиториев??

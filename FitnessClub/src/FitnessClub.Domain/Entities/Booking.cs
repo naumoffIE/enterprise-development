@@ -24,12 +24,8 @@ public class Booking : Entity
     /// Является ли тренировка пробной
     /// </summary>
     public bool IsTrial { get; set; }
-
     /// <summary>
-    /// Длительность тренировки (1 час сделал)
+    /// Длительность тренировки 
     /// </summary>
-    /// <remarks>
-    /// потом будет не статик
-    /// </remarks>
-    public static readonly TimeSpan Duration = TimeSpan.FromHours(1);
+    public TimeSpan Duration { get; set; }
 }

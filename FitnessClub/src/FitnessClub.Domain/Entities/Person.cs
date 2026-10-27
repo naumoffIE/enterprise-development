@@ -19,7 +19,7 @@ public abstract class Person : Entity
     /// <summary>
     /// Дата рождения
     /// </summary>
-    public DateOnly BirthDate { get; set; }
+    public required DateOnly BirthDate { get; set; }
     /// <summary>
     /// Номер телефона
     /// </summary>
