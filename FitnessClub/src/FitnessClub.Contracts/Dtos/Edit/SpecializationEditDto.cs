@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace FitnessClub.Contracts.Dto;
+namespace FitnessClub.Contracts.Dtos.Edit;
 /// <summary>
 /// Данные для создания или изменения специализации
 /// </summary>

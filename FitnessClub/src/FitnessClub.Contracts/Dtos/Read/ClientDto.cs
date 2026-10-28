@@ -1,6 +1,6 @@
-using FitnessClub.Domain.Entities;
+using FitnessClub.Domain.Enums;
 
-namespace FitnessClub.Contracts.Dto;
+namespace FitnessClub.Contracts.Dtos.Read;
 /// <summary>
 /// Данные клиента для ответа API
 /// </summary>

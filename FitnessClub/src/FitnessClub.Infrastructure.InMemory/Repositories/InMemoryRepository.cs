@@ -4,34 +4,58 @@ using FitnessClub.Domain.Interfaces;
 namespace FitnessClub.Infrastructure.InMemory.Repositories;
 public class InMemoryRepository<TEntity> : IRepository<TEntity> where TEntity : Entity
 {
+    private readonly Lock _lock = new();
     private readonly List<TEntity> _items = [];
     private int _nextId = 1;
     public Task<IReadOnlyList<TEntity>> GetAllAsync()
-        => Task.FromResult<IReadOnlyList<TEntity>>([.. _items]);
+    {
+        lock (_lock)
+        {
+            return Task.FromResult<IReadOnlyList<TEntity>>([.. _items]);
+        }
+    }
+
     public Task<TEntity?> GetByIdAsync(int id)
-        =>  Task.FromResult(_items.FirstOrDefault(e => e.Id == id));
+    {
+        lock (_lock)
+        {
+            return Task.FromResult(_items.FirstOrDefault(e => e.Id == id));
+        }
+    }
+
     public Task<TEntity> AddAsync(TEntity entity)
     {
-        // добавить lock`и ???
-        entity.Id = _nextId++;
-        _items.Add(entity);
-        return Task.FromResult(entity);
+        lock (_lock)
+        {
+            entity.Id = _nextId++;
+            _items.Add(entity);
+            return Task.FromResult(entity);
+        }
     }
+
     public Task<TEntity?> UpdateAsync(TEntity entity)
     {
-        var index = _items.FindIndex(e => e.Id == entity.Id);
-        if (index < 0)
-            return Task.FromResult<TEntity?>(null);
+        lock (_lock)
+        {
+            var index = _items.FindIndex(e => e.Id == entity.Id);
+            if (index < 0)
+                return Task.FromResult<TEntity?>(null);
 
-        _items[index] = entity;
-        return Task.FromResult<TEntity?>(entity);
+            _items[index] = entity;
+            return Task.FromResult<TEntity?>(entity);
+        }
     }
+
     public Task<bool> DeleteAsync(int id)
     {
-        var entity = _items.FirstOrDefault(e => e.Id == id);
-        if (entity is null)
-            return Task.FromResult(false);
-        _items.Remove(entity);
-        return Task.FromResult(true);
+        lock (_lock)
+        {
+            var index = _items.FindIndex(e => e.Id == id);
+            if (index < 0)
+                return Task.FromResult(false);
+
+            _items.RemoveAt(index);
+            return Task.FromResult(true);
+        }
     }
 } // нахуя а главное зачем в лекциях делали кучу инмемори репозиториев??

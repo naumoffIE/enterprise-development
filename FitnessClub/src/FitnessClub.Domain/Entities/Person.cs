@@ -1,3 +1,4 @@
+using FitnessClub.Domain.Enums;
 namespace FitnessClub.Domain.Entities;
 /// <summary>
 /// Класс для представления человека

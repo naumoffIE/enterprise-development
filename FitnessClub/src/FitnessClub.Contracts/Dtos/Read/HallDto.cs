@@ -1,4 +1,4 @@
-namespace FitnessClub.Contracts.Dto;
+namespace FitnessClub.Contracts.Dtos.Read;
 /// <summary>
 /// Данные зала для ответа API
 /// </summary>

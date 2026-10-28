@@ -1,4 +1,4 @@
-namespace FitnessClub.Domain.Entities;
+namespace FitnessClub.Domain.Enums;
 /// <summary>
 /// Мужское женское
 /// </summary>

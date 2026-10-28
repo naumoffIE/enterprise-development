@@ -1,6 +1,6 @@
-using FitnessClub.Domain.Entities;
+using FitnessClub.Domain.Enums;
 
-namespace FitnessClub.Contracts.Dto;
+namespace FitnessClub.Contracts.Dtos.Read;
 /// <summary>
 /// Данные тренера для ответа API
 /// </summary>
@@ -22,7 +22,7 @@ namespace FitnessClub.Contracts.Dto;
 /// <param name="PhoneNumber">
 /// Номер телефона
 /// </param>
-/// <param name="Specialization">
+/// <param name="SpecializationName">
 /// Название специализации
 /// </param>
 /// <param name="Experience">
@@ -36,6 +36,6 @@ public record TrainerDto
     Gender Gender,
     DateOnly BirthDate,
     string? PhoneNumber,
-    string Specialization,
+    string SpecializationName,
     int Experience
 );

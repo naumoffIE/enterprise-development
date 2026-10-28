@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace FitnessClub.Contracts.Dto;
+namespace FitnessClub.Contracts.Dtos.Edit;
 /// <summary>
 /// Данные для создания или изменения зала
 /// </summary>
@@ -10,7 +10,7 @@ public record HallEditDto : IValidatableObject
     /// Название зала
     /// </summary>
     [Required, MaxLength(200)]
-    public required string Name { get; set; }
+    public required string Name { get; init; }
 
     /// <summary>
     /// Проверяет, что название зала указано

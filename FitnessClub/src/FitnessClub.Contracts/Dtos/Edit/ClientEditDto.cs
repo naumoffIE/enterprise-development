@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using FitnessClub.Domain.Entities;
+using FitnessClub.Domain.Enums;
 
-namespace FitnessClub.Contracts.Dto;
+namespace FitnessClub.Contracts.Dtos.Edit;
 /// <summary>
 /// Данные для создания или изменения клиента
 /// </summary>
