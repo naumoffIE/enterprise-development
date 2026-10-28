@@ -6,6 +6,9 @@ namespace FitnessClub.Application.Mapping;
 
 public static class TrainerMapper
 {
+    /// <summary>
+    /// Преобразует тренера в DTO
+    /// </summary>
     public static TrainerDto ToDto(this Trainer trainer) =>
         new
         (
@@ -18,6 +21,9 @@ public static class TrainerMapper
             trainer.Specialization.Name,
             trainer.Experience
         );
+    /// <summary>
+    /// Создаёт тренера из DTO и специализации
+    /// </summary>
     public static Trainer ToEntity(this TrainerEditDto trainerEditDto, Specialization specialization) =>
         new()
         {
@@ -29,6 +35,9 @@ public static class TrainerMapper
             Specialization = specialization,
             Experience = trainerEditDto.Experience
         };
+    /// <summary>
+    /// Обновляет тренера данными из DTO и специализацией
+    /// </summary>
     public static void UpdateEntity(this Trainer trainer, TrainerEditDto trainerEditDto, Specialization specialization)
     {
         trainer.FullName = trainerEditDto.FullName;

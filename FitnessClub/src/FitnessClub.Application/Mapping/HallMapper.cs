@@ -6,7 +6,13 @@ namespace FitnessClub.Application.Mapping;
 
 public static class HallMapper
 {
+    /// <summary>
+    /// Преобразует зал в DTO
+    /// </summary>
     public static HallDto ToDto(this Hall hall) => new(hall.Id, hall.Name);
+    /// <summary>
+    /// Создаёт зал из DTO
+    /// </summary>
     public static Hall ToEntity(this HallEditDto hallEditDto) =>
         new() { Name = hallEditDto.Name };
 }

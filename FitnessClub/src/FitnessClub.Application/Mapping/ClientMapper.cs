@@ -6,6 +6,9 @@ namespace FitnessClub.Application.Mapping;
 
 public static class ClientMapper
 {
+    /// <summary>
+    /// Преобразует клиента в DTO
+    /// </summary>
     public static ClientDto ToDto(this Client client) =>
         new
         (
@@ -18,6 +21,9 @@ public static class ClientMapper
             client.SubscriptionStart,
             client.SubscriptionEnd
         );
+    /// <summary>
+    /// Создаёт клиента из DTO
+    /// </summary>
     public static Client ToEntity(this ClientEditDto clientEditDto) =>
         new()
         {
@@ -29,6 +35,9 @@ public static class ClientMapper
             SubscriptionStart = clientEditDto.SubscriptionStart,
             SubscriptionEnd = clientEditDto.SubscriptionEnd
         };
+    /// <summary>
+    /// Обновляет клиента данными из DTO
+    /// </summary>
     public static void UpdateEntity(this Client client, ClientEditDto clientEditDto)
     {
         client.FullName = clientEditDto.FullName;
