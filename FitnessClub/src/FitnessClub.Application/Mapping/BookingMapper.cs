@@ -3,7 +3,9 @@ using FitnessClub.Contracts.Dtos.Edit;
 using FitnessClub.Domain.Entities;
 
 namespace FitnessClub.Application.Mapping;
-
+/// <summary>
+/// Преобразует данные бронирований
+/// </summary>
 public static class BookingMapper
 {
     /// <summary>

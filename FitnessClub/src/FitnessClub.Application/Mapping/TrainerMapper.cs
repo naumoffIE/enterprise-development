@@ -3,7 +3,9 @@ using FitnessClub.Contracts.Dtos.Edit;
 using FitnessClub.Domain.Entities;
 
 namespace FitnessClub.Application.Mapping;
-
+/// <summary>
+/// Преобразует данные тренеров
+/// </summary>
 public static class TrainerMapper
 {
     /// <summary>

@@ -3,7 +3,9 @@ using FitnessClub.Contracts.Dtos.Edit;
 using FitnessClub.Domain.Entities;
 
 namespace FitnessClub.Application.Mapping;
-
+/// <summary>
+/// Преобразует данные специализаций
+/// </summary>
 public static class SpecializationMapper
 {
     /// <summary>

@@ -3,7 +3,9 @@ using FitnessClub.Contracts.Dtos.Edit;
 using FitnessClub.Domain.Entities;
 
 namespace FitnessClub.Application.Mapping;
-
+/// <summary>
+/// Преобразует данные залов
+/// </summary>
 public static class HallMapper
 {
     /// <summary>
