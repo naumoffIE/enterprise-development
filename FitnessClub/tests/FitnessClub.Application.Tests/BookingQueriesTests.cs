@@ -29,8 +29,7 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
         };
         //Act
         var result = fixture.Trainers.Where(t => t.Experience >= 5).ToList();
-        //Assert
-        Assert.NotEmpty(result);
+        //Assert;
         Assert.Equal(expectedFullNames, result.Select(t => t.FullName));
     }
     /// <summary>
@@ -54,7 +53,6 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
             .OrderBy(c => c.FullName)
             .ToList();
         //Assert
-        Assert.NotEmpty(result);
         Assert.Equal(expectedFullNames, result.Select(c => c.FullName));
     }
     /// <summary>
@@ -80,7 +78,6 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
             .Take(5)
             .ToList();
         //Assert
-        Assert.NotEmpty(result); // убрать нахер
         Assert.Equal(expectedFullNames, result.Select(b => b.Trainer.FullName));
     }
     /// <summary>
@@ -94,8 +91,8 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
         var busyHall = fixture.Halls[4];
         //Act
         var result = fixture.Bookings
-            .Where(b => b.DateTime < checkTime + Booking.Duration &&
-                        checkTime < b.DateTime + Booking.Duration)
+            .Where(b => b.DateTime < checkTime + b.Duration &&
+                        checkTime < b.DateTime + b.Duration)
             .Select(h => h.Hall)
             .ToList();
         //Assert
@@ -124,7 +121,6 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
                         b.DateTime.Year == checkDate.Year)
             .ToList();
         //Assert
-        Assert.NotEmpty(result);
         Assert.Equal(expectedBookingIds, result.Select(b => b.Id));
     }
 }

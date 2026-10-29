@@ -1,4 +1,4 @@
-using FitnessClub.Domain.Entities;
+﻿using FitnessClub.Domain.Entities;
 using FitnessClub.Domain.Enums;
 
 namespace FitnessClub.Domain.Seeds;
@@ -281,7 +281,8 @@ public class SeedData
                 Trainer = Trainers[0],
                 Hall = Halls[0],
                 DateTime = new DateTime(2026, 1, 1, 10, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
@@ -289,7 +290,8 @@ public class SeedData
                 Trainer = Trainers[1],
                 Hall = Halls[1],
                 DateTime = new DateTime(2026, 3, 19, 14, 30, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(90)
             },
             new Booking
             {
@@ -297,7 +299,8 @@ public class SeedData
                 Trainer = Trainers[2],
                 Hall = Halls[2],
                 DateTime = new DateTime(2025, 9, 11, 18, 15, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(45)
             },
             new Booking
             {
@@ -305,7 +308,8 @@ public class SeedData
                 Trainer = Trainers[3],
                 Hall = Halls[3],
                 DateTime = new DateTime(2026, 1, 1, 9, 45, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(120)
             },
             new Booking
             {
@@ -313,7 +317,8 @@ public class SeedData
                 Trainer = Trainers[4],
                 Hall = Halls[4],
                 DateTime = new DateTime(2025, 9, 1, 16, 0, 0),
-                IsTrial = true
+                IsTrial = true,
+                Duration = TimeSpan.FromMinutes(30)
             },
             new Booking
             {
@@ -321,7 +326,8 @@ public class SeedData
                 Trainer = Trainers[5],
                 Hall = Halls[5],
                 DateTime = new DateTime(2026, 6, 1, 11, 30, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
@@ -329,7 +335,8 @@ public class SeedData
                 Trainer = Trainers[6],
                 Hall = Halls[0],
                 DateTime = new DateTime(2026, 9, 29, 13, 15, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(180)
             },
             new Booking
             {
@@ -337,7 +344,8 @@ public class SeedData
                 Trainer = Trainers[7],
                 Hall = Halls[1],
                 DateTime = new DateTime(2026, 9, 13, 15, 45, 0),
-                IsTrial = true
+                IsTrial = true,
+                Duration = TimeSpan.FromMinutes(45)
             },
             new Booking
             {
@@ -345,7 +353,8 @@ public class SeedData
                 Trainer = Trainers[8],
                 Hall = Halls[2],
                 DateTime = new DateTime(2020, 1, 1, 12, 30, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(90)
             },
             new Booking
             {
@@ -353,7 +362,8 @@ public class SeedData
                 Trainer = Trainers[9],
                 Hall = Halls[3],
                 DateTime = new DateTime(2024, 8, 13, 17, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
@@ -361,7 +371,8 @@ public class SeedData
                 Trainer = Trainers[0],
                 Hall = Halls[4],
                 DateTime = new DateTime(2026, 9, 15, 12, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
@@ -369,7 +380,8 @@ public class SeedData
                 Trainer = Trainers[1],
                 Hall = Halls[4],
                 DateTime = new DateTime(2026, 9, 15, 10, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
@@ -377,7 +389,8 @@ public class SeedData
                 Trainer = Trainers[2],
                 Hall = Halls[4],
                 DateTime = new DateTime(2026, 9, 15, 11, 0, 0),
-                IsTrial = true
+                IsTrial = true,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
@@ -385,7 +398,8 @@ public class SeedData
                 Trainer = Trainers[1],
                 Hall = Halls[5],
                 DateTime = new DateTime(2026, 9, 15, 12, 30, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
@@ -393,7 +407,8 @@ public class SeedData
                 Trainer = Trainers[2],
                 Hall = Halls[6],
                 DateTime = new DateTime(2026, 9, 15, 13, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
@@ -401,7 +416,8 @@ public class SeedData
                 Trainer = Trainers[2],
                 Hall = Halls[2],
                 DateTime = new DateTime(2026, 2, 10, 9, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
@@ -409,7 +425,8 @@ public class SeedData
                 Trainer = Trainers[2],
                 Hall = Halls[2],
                 DateTime = new DateTime(2026, 3, 5, 11, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(90)
             },
             new Booking
             {
@@ -417,7 +434,8 @@ public class SeedData
                 Trainer = Trainers[6],
                 Hall = Halls[6],
                 DateTime = new DateTime(2026, 4, 1, 15, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(120)
             },
             new Booking
             {
@@ -425,7 +443,8 @@ public class SeedData
                 Trainer = Trainers[3],
                 Hall = Halls[6],
                 DateTime = new DateTime(2026, 5, 10, 16, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(180)
             },
             new Booking
             {
@@ -433,7 +452,8 @@ public class SeedData
                 Trainer = Trainers[3],
                 Hall = Halls[6],
                 DateTime = new DateTime(2026, 6, 15, 17, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(240)
             },
             new Booking
             {
@@ -441,7 +461,8 @@ public class SeedData
                 Trainer = Trainers[3],
                 Hall = Halls[6],
                 DateTime = new DateTime(2026, 7, 20, 18, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(360)
             },
         ];
     }

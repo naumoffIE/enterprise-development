@@ -1,3 +1,6 @@
+﻿using FitnessClub.Domain.Entities;
+using FitnessClub.Domain.Enums;
+
 namespace FitnessClub.Domain.Tests;
 
 /// <summary>
@@ -274,171 +277,213 @@ public class BookingQueriesFixture
         [
             new Booking
             {
+                Id = 1,
                 Client = Clients[0],
                 Trainer = Trainers[0],
                 Hall = Halls[0],
                 DateTime = new DateTime(2026, 1, 1, 10, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
+                Id = 2,
                 Client = Clients[1],
                 Trainer = Trainers[1],
                 Hall = Halls[1],
                 DateTime = new DateTime(2026, 3, 19, 14, 30, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(90)
             },
             new Booking
             {
+                Id = 3,
                 Client = Clients[2],
                 Trainer = Trainers[2],
                 Hall = Halls[2],
                 DateTime = new DateTime(2025, 9, 11, 18, 15, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(45)
             },
             new Booking
             {
+                Id = 4,
                 Client = Clients[3],
                 Trainer = Trainers[3],
                 Hall = Halls[3],
                 DateTime = new DateTime(2026, 1, 1, 9, 45, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(120)
             },
             new Booking
             {
+                Id = 5,
                 Client = Clients[4],
                 Trainer = Trainers[4],
                 Hall = Halls[4],
                 DateTime = new DateTime(2025, 9, 1, 16, 0, 0),
-                IsTrial = true
+                IsTrial = true,
+                Duration = TimeSpan.FromMinutes(30)
             },
             new Booking
             {
+                Id = 6,
                 Client = Clients[5],
                 Trainer = Trainers[5],
                 Hall = Halls[5],
                 DateTime = new DateTime(2026, 6, 1, 11, 30, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
+                Id = 7,
                 Client = Clients[6],
                 Trainer = Trainers[6],
                 Hall = Halls[0],
                 DateTime = new DateTime(2026, 9, 29, 13, 15, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(180)
             },
             new Booking
             {
+                Id = 8,
                 Client = Clients[7],
                 Trainer = Trainers[7],
                 Hall = Halls[1],
                 DateTime = new DateTime(2026, 9, 13, 15, 45, 0),
-                IsTrial = true
+                IsTrial = true,
+                Duration = TimeSpan.FromMinutes(45)
             },
             new Booking
             {
+                Id = 9,
                 Client = Clients[8],
                 Trainer = Trainers[8],
                 Hall = Halls[2],
                 DateTime = new DateTime(2020, 1, 1, 12, 30, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(90)
             },
             new Booking
             {
+                Id = 10,
                 Client = Clients[9],
                 Trainer = Trainers[9],
                 Hall = Halls[3],
                 DateTime = new DateTime(2024, 8, 13, 17, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
+                Id = 11,
                 Client = Clients[0],
                 Trainer = Trainers[0],
                 Hall = Halls[4],
                 DateTime = new DateTime(2026, 9, 15, 12, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
+                Id = 12,
                 Client = Clients[1],
                 Trainer = Trainers[1],
                 Hall = Halls[4],
                 DateTime = new DateTime(2026, 9, 15, 10, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
+                Id = 13,
                 Client = Clients[2],
                 Trainer = Trainers[2],
                 Hall = Halls[4],
                 DateTime = new DateTime(2026, 9, 15, 11, 0, 0),
-                IsTrial = true
+                IsTrial = true,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
+                Id = 14,
                 Client = Clients[1],
                 Trainer = Trainers[1],
                 Hall = Halls[5],
                 DateTime = new DateTime(2026, 9, 15, 12, 30, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
+                Id = 15,
                 Client = Clients[2],
                 Trainer = Trainers[2],
                 Hall = Halls[6],
                 DateTime = new DateTime(2026, 9, 15, 13, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
+                Id = 16,
                 Client = Clients[0],
                 Trainer = Trainers[2],
                 Hall = Halls[2],
                 DateTime = new DateTime(2026, 2, 10, 9, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(60)
             },
             new Booking
             {
+                Id = 17,
                 Client = Clients[1],
                 Trainer = Trainers[2],
                 Hall = Halls[2],
                 DateTime = new DateTime(2026, 3, 5, 11, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(90)
             },
             new Booking
             {
+                Id = 18,
                 Client = Clients[3],
                 Trainer = Trainers[6],
                 Hall = Halls[6],
                 DateTime = new DateTime(2026, 4, 1, 15, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(120)
             },
             new Booking
             {
+                Id = 19,
                 Client = Clients[4],
                 Trainer = Trainers[3],
                 Hall = Halls[6],
                 DateTime = new DateTime(2026, 5, 10, 16, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(180)
             },
             new Booking
             {
+                Id = 20,
                 Client = Clients[5],
                 Trainer = Trainers[3],
                 Hall = Halls[6],
                 DateTime = new DateTime(2026, 6, 15, 17, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(240)
             },
             new Booking
             {
+                Id = 21,
                 Client = Clients[6],
                 Trainer = Trainers[3],
                 Hall = Halls[6],
                 DateTime = new DateTime(2026, 7, 20, 18, 0, 0),
-                IsTrial = false
+                IsTrial = false,
+                Duration = TimeSpan.FromMinutes(360)
             },
         ];
     }
