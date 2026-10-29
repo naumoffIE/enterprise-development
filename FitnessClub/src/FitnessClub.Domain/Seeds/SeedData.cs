@@ -1,4 +1,5 @@
 using FitnessClub.Domain.Entities;
+using FitnessClub.Domain.Enums;
 
 namespace FitnessClub.Domain.Seeds;
 
