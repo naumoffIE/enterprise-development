@@ -17,4 +17,11 @@ public static class HallMapper
     /// </summary>
     public static Hall ToEntity(this HallEditDto hallEditDto) =>
         new() { Name = hallEditDto.Name };
+    /// <summary>
+    /// Обновляет зал данными из DTO
+    /// </summary>
+    public static void UpdateEntity(this Hall hall, HallEditDto hallEditDto)
+    {
+        hall.Name = hallEditDto.Name;
+    }
 }

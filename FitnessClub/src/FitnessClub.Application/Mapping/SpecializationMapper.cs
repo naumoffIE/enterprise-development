@@ -18,4 +18,11 @@ public static class SpecializationMapper
     /// </summary>
     public static Specialization ToEntity(this SpecializationEditDto specializationEditDto) =>
         new() { Name = specializationEditDto.Name };
+    /// <summary>
+    /// Обновляет специализацию данными из DTO
+    /// </summary>
+    public static void UpdateEntity(this Specialization specialization, SpecializationEditDto specializationEditDto)
+    {
+        specialization.Name = specializationEditDto.Name;
+    }
 }
