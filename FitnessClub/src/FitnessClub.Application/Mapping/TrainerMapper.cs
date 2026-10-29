@@ -19,6 +19,7 @@ public static class TrainerMapper
             Gender: trainer.Gender,
             BirthDate: trainer.BirthDate,
             PhoneNumber: trainer.PhoneNumber,
+            SpecializationId: trainer.Specialization.Id,
             SpecializationName: trainer.Specialization.Name,
             Experience: trainer.Experience);
     /// <summary>

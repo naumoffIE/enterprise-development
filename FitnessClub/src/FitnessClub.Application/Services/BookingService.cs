@@ -57,7 +57,6 @@ public class BookingService(
             ?? throw new NotFoundException($"Тренер с ID {editDto.TrainerId} не найден.");
         var hall = await hallRepository.GetByIdAsync(editDto.HallId)
             ?? throw new NotFoundException($"Зал с ID {editDto.HallId} не найден.");
-
         return (client, trainer, hall);
     }
 }

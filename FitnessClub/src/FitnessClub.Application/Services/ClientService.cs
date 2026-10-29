@@ -5,12 +5,14 @@ using FitnessClub.Contracts.Dtos.Read;
 using FitnessClub.Contracts.Interfaces;
 using FitnessClub.Domain.Entities;
 using FitnessClub.Domain.Interfaces;
+using FitnessClub.Application.Validation;
 
 namespace FitnessClub.Application.Services;
 
 public class ClientService(
     IRepository<Client> clientRepository,
-    IRepository<Booking> bookingRepository) : ICrudService<ClientDto, ClientEditDto>
+    IRepository<Booking> bookingRepository,
+    PassportNumberUniquenessValidator passportNumberValidator) : ICrudService<ClientDto, ClientEditDto>
 {
     public async Task<IReadOnlyList<ClientDto>> GetAllAsync()
     {
@@ -24,6 +26,7 @@ public class ClientService(
     }
     public async Task<ClientDto> AddAsync(ClientEditDto editDto)
     {
+        await passportNumberValidator.EnsureUniqueAsync(editDto.PassportNumber);
         var client = await clientRepository.AddAsync(editDto.ToEntity());
         return client.ToDto();
     }
@@ -32,6 +35,7 @@ public class ClientService(
         var client = await clientRepository.GetByIdAsync(id);
         if (client is null)
             return null;
+        await passportNumberValidator.EnsureUniqueAsync(editDto.PassportNumber, client);
         client.UpdateEntity(editDto);
         await clientRepository.UpdateAsync(client);
         return client.ToDto();

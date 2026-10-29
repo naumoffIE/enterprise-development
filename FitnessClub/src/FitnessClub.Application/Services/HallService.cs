@@ -32,7 +32,7 @@ public class HallService(
         var hall = await hallRepository.GetByIdAsync(id);
         if (hall is null)
             return null;
-        hall.Name = editDto.Name;
+        hall.UpdateEntity(editDto);
         await hallRepository.UpdateAsync(hall);
         return hall.ToDto();
     }

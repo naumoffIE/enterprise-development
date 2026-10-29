@@ -5,13 +5,15 @@ using FitnessClub.Contracts.Dtos.Read;
 using FitnessClub.Contracts.Interfaces;
 using FitnessClub.Domain.Entities;
 using FitnessClub.Domain.Interfaces;
+using FitnessClub.Application.Validation;
 
 namespace FitnessClub.Application.Services;
 
 public class TrainerService(
     IRepository<Trainer> trainerRepository,
     IRepository<Booking> bookingRepository,
-    IRepository<Specialization> specializationRepository) : ICrudService<TrainerDto, TrainerEditDto>
+    IRepository<Specialization> specializationRepository,
+    PassportNumberUniquenessValidator passportNumberValidator) : ICrudService<TrainerDto, TrainerEditDto>
 {
     public async Task<IReadOnlyList<TrainerDto>> GetAllAsync()
     {
@@ -25,7 +27,8 @@ public class TrainerService(
     }
     public async Task<TrainerDto> AddAsync(TrainerEditDto editDto)
     {
-        var specialization = await specializationRepository.GetByIdAsync(editDto.SpecializationId) ?? throw new ArgumentException("Специализация не найдена.");
+        await passportNumberValidator.EnsureUniqueAsync(editDto.PassportNumber);
+        var specialization = await specializationRepository.GetByIdAsync(editDto.SpecializationId) ?? throw new NotFoundException("Специализация не найдена.");
         var trainer = await trainerRepository.AddAsync(editDto.ToEntity(specialization));
         return trainer.ToDto();
     }
@@ -34,7 +37,8 @@ public class TrainerService(
         var trainer = await trainerRepository.GetByIdAsync(id);
         if (trainer is null)
             return null;
-        var specialization = await specializationRepository.GetByIdAsync(editDto.SpecializationId) ?? throw new ArgumentException("Специализация не найдена.");
+        await passportNumberValidator.EnsureUniqueAsync(editDto.PassportNumber, trainer);
+        var specialization = await specializationRepository.GetByIdAsync(editDto.SpecializationId) ?? throw new NotFoundException("Специализация не найдена.");
         trainer.UpdateEntity(editDto, specialization);
         await trainerRepository.UpdateAsync(trainer);
         return trainer.ToDto();

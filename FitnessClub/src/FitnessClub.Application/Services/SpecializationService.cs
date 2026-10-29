@@ -32,7 +32,7 @@ public class SpecializationService(
         var specialization = await specializationRepository.GetByIdAsync(id);
         if (specialization is null)
             return null;
-        specialization.Name = editDto.Name;
+        specialization.UpdateEntity(editDto);
         await specializationRepository.UpdateAsync(specialization);
         return specialization.ToDto();
     }
