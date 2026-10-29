@@ -30,7 +30,7 @@ public class BookingService(
         var hall = await hallRepository.GetByIdAsync(editDto.HallId);
 
         if (client is null || trainer is null || hall is null)
-            throw new ArgumentException("Client, Trainer or Hall not found.");
+            throw new ArgumentException("Клиент, тренер или зал не найдены.");
 
         var booking = await bookingRepository.AddAsync(editDto.ToEntity(client, trainer, hall));
         return booking.ToDto();
@@ -46,7 +46,7 @@ public class BookingService(
         var hall = await hallRepository.GetByIdAsync(editDto.HallId);
 
         if (client is null || trainer is null || hall is null)
-            throw new ArgumentException("Client, Trainer or Hall not found.");
+            throw new ArgumentException("Клиент, тренер или зал не найдены.");
 
         booking.UpdateEntity(editDto, client, trainer, hall);
         await bookingRepository.UpdateAsync(booking);
