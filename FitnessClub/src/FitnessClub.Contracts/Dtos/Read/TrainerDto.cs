@@ -22,6 +22,9 @@ namespace FitnessClub.Contracts.Dtos.Read;
 /// <param name="PhoneNumber">
 /// Номер телефона
 /// </param>
+/// <param name="SpecializationId">
+/// Идентификатор специализации
+/// </param>
 /// <param name="SpecializationName">
 /// Название специализации
 /// </param>
@@ -36,6 +39,7 @@ public record TrainerDto
     Gender Gender,
     DateOnly BirthDate,
     string? PhoneNumber,
+    int SpecializationId,
     string SpecializationName,
     int Experience
 );
