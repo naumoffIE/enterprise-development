@@ -1,4 +1,5 @@
 using FitnessClub.Application.Mapping;
+using FitnessClub.Application.Exceptions;
 using FitnessClub.Contracts.Dtos.Edit;
 using FitnessClub.Contracts.Dtos.Read;
 using FitnessClub.Contracts.Interfaces;
@@ -25,12 +26,7 @@ public class BookingService(
     }
     public async Task<BookingDto> AddAsync(BookingEditDto editDto)
     {
-        var client = await clientRepository.GetByIdAsync(editDto.ClientId);
-        var trainer = await trainerRepository.GetByIdAsync(editDto.TrainerId);
-        var hall = await hallRepository.GetByIdAsync(editDto.HallId);
-
-        if (client is null || trainer is null || hall is null)
-            throw new ArgumentException("Клиент, тренер или зал не найдены.");
+        var (client, trainer, hall) = await GetBookingReferencesAsync(editDto);
 
         var booking = await bookingRepository.AddAsync(editDto.ToEntity(client, trainer, hall));
         return booking.ToDto();
@@ -41,12 +37,7 @@ public class BookingService(
         if (booking is null)
             return null;
 
-        var client = await clientRepository.GetByIdAsync(editDto.ClientId);
-        var trainer = await trainerRepository.GetByIdAsync(editDto.TrainerId);
-        var hall = await hallRepository.GetByIdAsync(editDto.HallId);
-
-        if (client is null || trainer is null || hall is null)
-            throw new ArgumentException("Клиент, тренер или зал не найдены.");
+        var (client, trainer, hall) = await GetBookingReferencesAsync(editDto);
 
         booking.UpdateEntity(editDto, client, trainer, hall);
         await bookingRepository.UpdateAsync(booking);
@@ -55,5 +46,18 @@ public class BookingService(
     public async Task<bool> DeleteAsync(int id)
     {
         return await bookingRepository.DeleteAsync(id);
+    }
+
+    private async Task<(Client, Trainer, Hall)> GetBookingReferencesAsync(
+        BookingEditDto editDto)
+    {
+        var client = await clientRepository.GetByIdAsync(editDto.ClientId)
+            ?? throw new NotFoundException($"Клиент с ID {editDto.ClientId} не найден.");
+        var trainer = await trainerRepository.GetByIdAsync(editDto.TrainerId)
+            ?? throw new NotFoundException($"Тренер с ID {editDto.TrainerId} не найден.");
+        var hall = await hallRepository.GetByIdAsync(editDto.HallId)
+            ?? throw new NotFoundException($"Зал с ID {editDto.HallId} не найден.");
+
+        return (client, trainer, hall);
     }
 }
