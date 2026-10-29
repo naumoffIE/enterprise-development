@@ -31,8 +31,8 @@ namespace FitnessClub.Contracts.Dtos.Read;
 public record ClientDto
 (
     int Id,
-    string PassportNumber,
     string FullName,
+    string PassportNumber,
     Gender Gender,
     DateOnly BirthDate,
     string? PhoneNumber,
