@@ -12,17 +12,15 @@ public static class TrainerMapper
     /// Преобразует тренера в DTO
     /// </summary>
     public static TrainerDto ToDto(this Trainer trainer) =>
-        new
-        (
-            trainer.Id,
-            trainer.FullName,
-            trainer.PassportNumber,
-            trainer.Gender,
-            trainer.BirthDate,
-            trainer.PhoneNumber,
-            trainer.Specialization.Name,
-            trainer.Experience
-        );
+        new(
+            Id: trainer.Id,
+            FullName: trainer.FullName,
+            PassportNumber: trainer.PassportNumber,
+            Gender: trainer.Gender,
+            BirthDate: trainer.BirthDate,
+            PhoneNumber: trainer.PhoneNumber,
+            SpecializationName: trainer.Specialization.Name,
+            Experience: trainer.Experience);
     /// <summary>
     /// Создаёт тренера из DTO и специализации
     /// </summary>

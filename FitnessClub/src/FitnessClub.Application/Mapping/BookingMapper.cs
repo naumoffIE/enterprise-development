@@ -12,16 +12,14 @@ public static class BookingMapper
     /// Преобразует запись в DTO
     /// </summary>
     public static BookingDto ToDto(this Booking booking) =>
-        new
-        (
-            booking.Id,
-            booking.Client.Id,
-            booking.Trainer.Id,
-            booking.Hall.Id,
-            booking.DateTime,
-            booking.IsTrial,
-            booking.Duration
-        );
+        new(
+            Id: booking.Id,
+            ClientId: booking.Client.Id,
+            TrainerId: booking.Trainer.Id,
+            HallId: booking.Hall.Id,
+            DateTime: booking.DateTime,
+            IsTrial: booking.IsTrial,
+            Duration: booking.Duration);
     /// <summary>
     /// Создаёт запись из DTO и связанных сущностей
     /// </summary>

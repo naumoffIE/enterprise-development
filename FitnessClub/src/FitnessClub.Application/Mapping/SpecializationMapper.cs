@@ -12,7 +12,9 @@ public static class SpecializationMapper
     /// Преобразует специализацию в DTO
     /// </summary>
     public static SpecializationDto ToDto(this Specialization specialization) =>
-        new(specialization.Id, specialization.Name);
+        new(
+            Id: specialization.Id,
+            Name: specialization.Name);
     /// <summary>
     /// Создаёт специализацию из DTO
     /// </summary>

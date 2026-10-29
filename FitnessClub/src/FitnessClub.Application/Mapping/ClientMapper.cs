@@ -12,17 +12,15 @@ public static class ClientMapper
     /// Преобразует клиента в DTO
     /// </summary>
     public static ClientDto ToDto(this Client client) =>
-        new
-        (
-            client.Id,
-            client.FullName,
-            client.PassportNumber,
-            client.Gender,
-            client.BirthDate,
-            client.PhoneNumber,
-            client.SubscriptionStart,
-            client.SubscriptionEnd
-        );
+        new(
+            Id: client.Id,
+            FullName: client.FullName,
+            PassportNumber: client.PassportNumber,
+            Gender: client.Gender,
+            BirthDate: client.BirthDate,
+            PhoneNumber: client.PhoneNumber,
+            SubscriptionStart: client.SubscriptionStart,
+            SubscriptionEnd: client.SubscriptionEnd);
     /// <summary>
     /// Создаёт клиента из DTO
     /// </summary>

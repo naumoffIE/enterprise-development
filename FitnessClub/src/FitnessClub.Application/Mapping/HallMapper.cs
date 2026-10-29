@@ -11,7 +11,10 @@ public static class HallMapper
     /// <summary>
     /// Преобразует зал в DTO
     /// </summary>
-    public static HallDto ToDto(this Hall hall) => new(hall.Id, hall.Name);
+    public static HallDto ToDto(this Hall hall) =>
+        new(
+            Id: hall.Id,
+            Name: hall.Name);
     /// <summary>
     /// Создаёт зал из DTO
     /// </summary>
