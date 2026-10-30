@@ -5,6 +5,7 @@ using FitnessClub.Contracts.Dtos.Read;
 using FitnessClub.Contracts.Interfaces;
 using FitnessClub.Domain.Entities;
 using FitnessClub.Domain.Interfaces;
+using FitnessClub.Application.Validation;
 
 namespace FitnessClub.Application.Services;
 
@@ -12,7 +13,9 @@ public class BookingService(
     IRepository<Booking> bookingRepository,
     IRepository<Client> clientRepository,
     IRepository<Trainer> trainerRepository,
-    IRepository<Hall> hallRepository) : ICrudService<BookingDto, BookingEditDto>
+    IRepository<Hall> hallRepository,
+    BookingScheduleValidator scheduleValidator
+    ) : ICrudService<BookingDto, BookingEditDto>
 {
     public async Task<IReadOnlyList<BookingDto>> GetAllAsync()
     {
@@ -27,27 +30,29 @@ public class BookingService(
     public async Task<BookingDto> AddAsync(BookingEditDto editDto)
     {
         var (client, trainer, hall) = await GetBookingReferencesAsync(editDto);
+        var booking = editDto.ToEntity(client, trainer, hall);
+        await scheduleValidator.EnsureAvailableAsync(booking);
 
-        var booking = await bookingRepository.AddAsync(editDto.ToEntity(client, trainer, hall));
-        return booking.ToDto();
+        var savedBooking = await bookingRepository.AddAsync(booking);
+        return savedBooking.ToDto();
     }
     public async Task<BookingDto?> UpdateAsync(int id, BookingEditDto editDto)
     {
-        var booking = await bookingRepository.GetByIdAsync(id);
-        if (booking is null)
+        var existingBooking = await bookingRepository.GetByIdAsync(id);
+        if (existingBooking is null)
             return null;
 
         var (client, trainer, hall) = await GetBookingReferencesAsync(editDto);
-
-        booking.UpdateEntity(editDto, client, trainer, hall);
-        await bookingRepository.UpdateAsync(booking);
-        return booking.ToDto();
+        var candidateBooking = editDto.ToEntity(client, trainer, hall);
+        candidateBooking.Id = id; //эту шнягу в 3-ей лабе мб придется переделать
+        await scheduleValidator.EnsureAvailableAsync(candidateBooking, excludingBookingId: id);
+        var savedBooking = await bookingRepository.UpdateAsync(candidateBooking);
+        return savedBooking?.ToDto();
     }
     public async Task<bool> DeleteAsync(int id)
     {
         return await bookingRepository.DeleteAsync(id);
     }
-
     private async Task<(Client, Trainer, Hall)> GetBookingReferencesAsync(
         BookingEditDto editDto)
     {

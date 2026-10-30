@@ -18,7 +18,6 @@ public class PassportNumberUniquenessValidator(
             throw new ConflictException(
                 $"Человек с паспортным номером {passportNumber} уже существует.");
         }
-
         var trainers = await trainerRepository.GetAllAsync();
         if (trainers.Any(trainer =>
                 trainer.PassportNumber == passportNumber &&
