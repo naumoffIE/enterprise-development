@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 using FitnessClub.Api.ExceptionHandlers;
 using FitnessClub.Application;
 using FitnessClub.Infrastructure.InMemory;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +22,10 @@ await app.Services.SeedInMemoryStorageAsync();
 app.UseExceptionHandler();
 
 if (app.Environment.IsDevelopment())
+{
     app.MapOpenApi();
+    app.MapScalarApiReference();
+}
 
 app.MapControllers();
 app.Run();

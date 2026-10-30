@@ -1,0 +1,16 @@
+@baseUrl = http://localhost:5000
+
+### Experienced trainers
+GET {{baseUrl}}/api/analytics/experienced-trainers?minimumExperience=5
+
+### Clients with overdue subscriptions
+GET {{baseUrl}}/api/analytics/overdue-subscriptions?asOfDate=2026-09-15
+
+### Most popular trainers
+GET {{baseUrl}}/api/analytics/popular-trainers?count=5
+
+### Check hall availability
+GET {{baseUrl}}/api/analytics/halls/5/availability?dateTime=2026-09-15T10:30:00
+
+### Bookings in a hall for the month
+GET {{baseUrl}}/api/analytics/bookings?hallId=5&dateInMonth=2026-09-01
