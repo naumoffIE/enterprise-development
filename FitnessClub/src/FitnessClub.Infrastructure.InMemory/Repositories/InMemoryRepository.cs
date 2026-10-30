@@ -14,7 +14,6 @@ public class InMemoryRepository<TEntity> : IRepository<TEntity> where TEntity : 
             return Task.FromResult<IReadOnlyList<TEntity>>([.. _items]);
         }
     }
-
     public Task<TEntity?> GetByIdAsync(int id)
     {
         lock (_lock)
@@ -22,7 +21,6 @@ public class InMemoryRepository<TEntity> : IRepository<TEntity> where TEntity : 
             return Task.FromResult(_items.FirstOrDefault(e => e.Id == id));
         }
     }
-
     public Task<TEntity> AddAsync(TEntity entity)
     {
         lock (_lock)
@@ -32,7 +30,6 @@ public class InMemoryRepository<TEntity> : IRepository<TEntity> where TEntity : 
             return Task.FromResult(entity);
         }
     }
-
     public Task<TEntity?> UpdateAsync(TEntity entity)
     {
         lock (_lock)
@@ -45,7 +42,6 @@ public class InMemoryRepository<TEntity> : IRepository<TEntity> where TEntity : 
             return Task.FromResult<TEntity?>(entity);
         }
     }
-
     public Task<bool> DeleteAsync(int id)
     {
         lock (_lock)
@@ -58,4 +54,4 @@ public class InMemoryRepository<TEntity> : IRepository<TEntity> where TEntity : 
             return Task.FromResult(true);
         }
     }
-} // нахуя а главное зачем в лекциях делали кучу инмемори репозиториев??
+}
