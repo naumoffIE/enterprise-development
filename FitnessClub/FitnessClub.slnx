@@ -7,6 +7,6 @@
     <Project Path="src/FitnessClub.Infrastructure.InMemory/FitnessClub.Infrastructure.InMemory.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests/FitnessClub.Application.Tests/FitnessClub.Domain.Tests.csproj" />
+    <Project Path="tests/FitnessClub.Application.Tests/FitnessClub.Application.Tests.csproj" />
   </Folder>
 </Solution>

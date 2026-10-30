@@ -1,4 +1,4 @@
-namespace FitnessClub.Domain.Tests;
+namespace FitnessClub.Application.Tests;
 /// <summary>
 /// Класс тестов для запросов бронирования
 /// </summary>
