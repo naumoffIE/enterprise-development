@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using FitnessClub.Contracts.Dtos.Analytics;
 using FitnessClub.Contracts.Dtos.Read;
@@ -20,7 +21,9 @@ public class AnalyticsController(IAnalyticsService analyticsService) : Controlle
     [HttpGet("experienced-trainers")]
     [ProducesResponseType(typeof(IReadOnlyList<TrainerDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IReadOnlyList<TrainerDto>>> GetExperiencedTrainers(
-        [FromQuery, Range(0, int.MaxValue)] int minimumExperience = 5) =>
+        [FromQuery, Range(0, int.MaxValue)]
+        [Description("Минимальный стаж в годах. Пример: 5.")]
+        int minimumExperience = 5) =>
         Ok(await analyticsService.GetExperiencedTrainersAsync(minimumExperience));
 
     /// <summary>
@@ -29,7 +32,9 @@ public class AnalyticsController(IAnalyticsService analyticsService) : Controlle
     [HttpGet("overdue-subscriptions")]
     [ProducesResponseType(typeof(IReadOnlyList<ClientDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IReadOnlyList<ClientDto>>> GetClientsWithOverdueSubscriptions(
-        [FromQuery] DateOnly asOfDate) =>
+        [FromQuery]
+        [Description("Дата проверки в формате yyyy-MM-dd, без кавычек. Пример: 2026-09-15.")]
+        DateOnly asOfDate) =>
         Ok(await analyticsService.GetClientsWithOverdueSubscriptionsAsync(asOfDate));
 
     /// <summary>
@@ -38,7 +43,9 @@ public class AnalyticsController(IAnalyticsService analyticsService) : Controlle
     [HttpGet("popular-trainers")]
     [ProducesResponseType(typeof(IReadOnlyList<PopularTrainerDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IReadOnlyList<PopularTrainerDto>>> GetMostPopularTrainers(
-        [FromQuery, Range(1, int.MaxValue)] int count = 5) =>
+        [FromQuery, Range(1, int.MaxValue)]
+        [Description("Количество тренеров в результате, не меньше 1. Пример: 5.")]
+        int count = 5) =>
         Ok(await analyticsService.GetMostPopularTrainersAsync(count));
 
     /// <summary>
@@ -48,8 +55,12 @@ public class AnalyticsController(IAnalyticsService analyticsService) : Controlle
     [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<bool>> IsHallAvailable(
+        [FromRoute, Range(1, int.MaxValue)]
+        [Description("Идентификатор зала. Пример: 5.")]
         int hallId,
-        [FromQuery] DateTime dateTime) =>
+        [FromQuery]
+        [Description("Дата и время в формате yyyy-MM-ddTHH:mm:ss, без кавычек. Пример: 2026-09-15T10:30:00.")]
+        DateTime dateTime) =>
         Ok(await analyticsService.IsHallAvailableAsync(hallId, dateTime));
 
     /// <summary>
@@ -59,7 +70,11 @@ public class AnalyticsController(IAnalyticsService analyticsService) : Controlle
     [ProducesResponseType(typeof(IReadOnlyList<BookingDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IReadOnlyList<BookingDto>>> GetBookingsInHallForMonth(
-        [FromQuery, Range(1, int.MaxValue)] int hallId,
-        [FromQuery] DateOnly dateInMonth) =>
+        [FromQuery, Range(1, int.MaxValue)]
+        [Description("Идентификатор зала. Пример: 5.")]
+        int hallId,
+        [FromQuery]
+        [Description("Дата месяца в формате yyyy-MM-dd, без кавычек и времени. Пример: 2026-09-01.")]
+        DateOnly dateInMonth) =>
         Ok(await analyticsService.GetBookingsInHallForMonthAsync(hallId, dateInMonth));
 }
