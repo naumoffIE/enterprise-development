@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FitnessClub.Api.Controllers;
 
 /// <summary>
-/// Управление залами
+/// Управление клиентами
 /// </summary>
 [ApiController]
 [Route("api/clients")]
