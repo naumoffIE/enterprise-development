@@ -1,4 +1,5 @@
 using FitnessClub.Application.Services;
+using FitnessClub.Application.Services.Analytics;
 using FitnessClub.Application.Validation;
 using FitnessClub.Contracts.Dtos.Edit;
 using FitnessClub.Contracts.Dtos.Read;
@@ -25,6 +26,7 @@ public static class DependencyInjection
     {
         services.AddScoped<PassportNumberUniquenessValidator>();
         services.AddScoped<BookingScheduleValidator>();
+        services.AddScoped<IAnalyticsService, AnalyticsService>();
         
         services.AddScoped<ICrudService<TrainerDto, TrainerEditDto>, TrainerService>();
         services.AddScoped<ICrudService<BookingDto, BookingEditDto>, BookingService>();
