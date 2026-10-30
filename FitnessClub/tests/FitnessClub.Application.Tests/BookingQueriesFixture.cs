@@ -1,5 +1,6 @@
+using FitnessClub.Application;
+using FitnessClub.Contracts.Interfaces;
 using FitnessClub.Domain.Entities;
-using FitnessClub.Domain.Interfaces;
 using FitnessClub.Domain.Seeds;
 using FitnessClub.Infrastructure.InMemory;
 using FitnessClub.Infrastructure.InMemory.Seeding;
@@ -10,31 +11,29 @@ namespace FitnessClub.Application.Tests;
 public sealed class BookingQueriesFixture : IAsyncLifetime
 {
     private ServiceProvider? _serviceProvider;
+    private AsyncServiceScope? _scope;
 
-    public IReadOnlyList<Client> Clients { get; private set; } = [];
-    public IReadOnlyList<Trainer> Trainers { get; private set; } = [];
-    public IReadOnlyList<Hall> Halls { get; private set; } = [];
-    public IReadOnlyList<Booking> Bookings { get; private set; } = [];
+    public SeedData SeedData { get; } = new();
+    public IAnalyticsService AnalyticsService { get; private set; } = null!;
 
     public async ValueTask InitializeAsync()
     {
         var services = new ServiceCollection();
         services.AddInMemoryStorage();
+        services.AddApplication();
         _serviceProvider = services.BuildServiceProvider();
 
-        await using var scope = _serviceProvider.CreateAsyncScope();
-        var scopedServices = scope.ServiceProvider;
+        _scope = _serviceProvider.CreateAsyncScope();
+        var scopedServices = _scope.Value.ServiceProvider;
         var seeder = scopedServices.GetRequiredService<DataSeeder>();
-        await seeder.DataSeedingAsync(new SeedData());
-
-        Clients = await scopedServices.GetRequiredService<IRepository<Client>>().GetAllAsync();
-        Trainers = await scopedServices.GetRequiredService<IRepository<Trainer>>().GetAllAsync();
-        Halls = await scopedServices.GetRequiredService<IRepository<Hall>>().GetAllAsync();
-        Bookings = await scopedServices.GetRequiredService<IRepository<Booking>>().GetAllAsync();
+        await seeder.DataSeedingAsync(SeedData);
+        AnalyticsService = scopedServices.GetRequiredService<IAnalyticsService>();
     }
 
     public async ValueTask DisposeAsync()
     {
+        if (_scope is not null)
+            await _scope.Value.DisposeAsync();
         if (_serviceProvider is not null)
             await _serviceProvider.DisposeAsync();
     }

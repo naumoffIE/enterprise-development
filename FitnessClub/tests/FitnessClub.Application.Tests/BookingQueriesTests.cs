@@ -13,114 +13,99 @@ public class BookingQueriesTests(BookingQueriesFixture fixture) : IClassFixture<
     /// Вывести информацию о всех тренерах, стаж работы которых не менее 5 лет. 
     /// </summary>
     [Fact]
-    public void ExperiencedTrainers_ShouldHaveAtLeast5YearsExperience()
+    public async Task ExperiencedTrainers_ShouldHaveAtLeast5YearsExperience()
     {
-        //Arrange
-        var expectedFullNames = new[]
+        var expectedTrainers = new[]
         {
-            fixture.Trainers[0].FullName,
-            fixture.Trainers[2].FullName,
-            fixture.Trainers[3].FullName,
-            fixture.Trainers[5].FullName,
-            fixture.Trainers[6].FullName,
-            fixture.Trainers[7].FullName,
-            fixture.Trainers[8].FullName,
-            fixture.Trainers[9].FullName
+            fixture.SeedData.Trainers[0],
+            fixture.SeedData.Trainers[2],
+            fixture.SeedData.Trainers[3],
+            fixture.SeedData.Trainers[5],
+            fixture.SeedData.Trainers[6],
+            fixture.SeedData.Trainers[7],
+            fixture.SeedData.Trainers[8],
+            fixture.SeedData.Trainers[9]
         };
-        //Act
-        var result = fixture.Trainers.Where(t => t.Experience >= 5).ToList();
-        //Assert;
-        Assert.Equal(expectedFullNames, result.Select(t => t.FullName));
+
+        var result = await fixture.AnalyticsService.GetExperiencedTrainersAsync();
+
+        Assert.Equal(expectedTrainers.Select(trainer => trainer.FullName),
+            result.Select(trainer => trainer.FullName));
+        Assert.All(result, trainer => Assert.True(trainer.Experience >= 5));
     }
     /// <summary>
     /// Вывести информацию о клиентах, у которых просрочен абонемент, упорядочить по ФИО. 
     /// </summary>
     [Fact]
-    public void ClientsWithOverdueSubscriptions_ShouldBeOrderedByFullName()
+    public async Task ClientsWithOverdueSubscriptions_ShouldBeOrderedByFullName()
     {
-        //Arrange
         var checkDate = DateOnly.FromDateTime(_checkTime.Date);
-        var expectedFullNames = new[]
+        var expectedClients = new[]
         {
-            fixture.Clients[11].FullName,
-            fixture.Clients[10].FullName,
-            fixture.Clients[2].FullName,
-            fixture.Clients[4].FullName
+            fixture.SeedData.Clients[11],
+            fixture.SeedData.Clients[10],
+            fixture.SeedData.Clients[2],
+            fixture.SeedData.Clients[4]
         };
-        //Act
-        var result = fixture.Clients
-            .Where(c => c.SubscriptionEnd < checkDate)
-            .OrderBy(c => c.FullName)
-            .ToList();
-        //Assert
-        Assert.Equal(expectedFullNames, result.Select(c => c.FullName));
+
+        var result = await fixture.AnalyticsService
+            .GetClientsWithOverdueSubscriptionsAsync(checkDate);
+
+        Assert.Equal(expectedClients.Select(client => client.FullName),
+            result.Select(client => client.FullName));
+        Assert.All(result, client => Assert.True(client.SubscriptionEnd < checkDate));
     }
     /// <summary>
     /// Вывести топ 5 наиболее популярных тренеров.
     /// </summary>
     [Fact]
-    public void MostPopularTrainers_ShouldBeOrderedByNumberOfBookings()
+    public async Task MostPopularTrainers_ShouldBeOrderedByNumberOfBookings()
     {
-        //Arrange
-        var expectedFullNames = new[]
-        {
-            fixture.Trainers[2].FullName,
-            fixture.Trainers[3].FullName,
-            fixture.Trainers[1].FullName,
-            fixture.Trainers[0].FullName,
-            fixture.Trainers[6].FullName
-        };
-        //Act
-        var result = fixture.Bookings
-            .GroupBy(b => b.Trainer)
-            .Select(g => new { Trainer = g.Key, BookingCount = g.Count() })
-            .OrderByDescending(t => t.BookingCount)
-            .Take(5)
-            .ToList();
-        //Assert
-        Assert.Equal(expectedFullNames, result.Select(b => b.Trainer.FullName));
+        var result = await fixture.AnalyticsService.GetMostPopularTrainersAsync();
+
+        Assert.Equal([3, 4, 2, 1, 7], result.Select(trainer => trainer.TrainerId));
+        Assert.Equal([5, 4, 3, 2, 2], result.Select(trainer => trainer.BookingCount));
+        Assert.Equal(
+            [
+                fixture.SeedData.Trainers[2].FullName,
+                fixture.SeedData.Trainers[3].FullName,
+                fixture.SeedData.Trainers[1].FullName,
+                fixture.SeedData.Trainers[0].FullName,
+                fixture.SeedData.Trainers[6].FullName
+            ],
+            result.Select(trainer => trainer.TrainerFullName));
     }
     /// <summary>
     /// Проверить, является ли зал доступным для записи в момент времени _checkTime. 
     /// </summary>
     [Fact]
-    public void Hall_ShouldBeUnavailable_WhenBookingOverlapsCheckTime()
+    public async Task Hall_ShouldBeUnavailable_WhenBookingOverlapsCheckTime()
     {
-        //Arrange
-        var checkTime = _checkTime;
-        var busyHall = fixture.Halls[4];
-        //Act
-        var result = fixture.Bookings
-            .Where(b => b.DateTime < checkTime + b.Duration &&
-                        checkTime < b.DateTime + b.Duration)
-            .Select(h => h.Hall)
-            .ToList();
-        //Assert
-        Assert.NotEmpty(result);
-        Assert.Contains(busyHall, result);
+        var busyHallId = fixture.SeedData.Halls[4].Id;
+
+        var isAvailable = await fixture.AnalyticsService
+            .IsHallAvailableAsync(busyHallId, _checkTime);
+
+        Assert.False(isAvailable);
     }
     /// <summary>
     /// Вывести информацию о занятиях за текущий месяц, проходящих в выбранном зале.
     /// </summary>
     [Fact]
-    public void SessionsInTheChosenHall_ShouldBeFilteredByCurrentMonth()
+    public async Task SessionsInTheChosenHall_ShouldBeFilteredByCurrentMonth()
     {
-        //Arrange
         var checkDate = DateOnly.FromDateTime(_checkTime.Date);
-        var chosenHall = fixture.Halls[4];
+        var chosenHallId = fixture.SeedData.Halls[4].Id;
         var expectedBookingIds = new[]
         {
-            fixture.Bookings[10].Id,
-            fixture.Bookings[11].Id,
-            fixture.Bookings[12].Id
+            fixture.SeedData.Bookings[10].Id,
+            fixture.SeedData.Bookings[11].Id,
+            fixture.SeedData.Bookings[12].Id
         };
-        //Act
-        var result = fixture.Bookings
-            .Where(b => b.Hall == chosenHall &&
-                        b.DateTime.Month == checkDate.Month &&
-                        b.DateTime.Year == checkDate.Year)
-            .ToList();
-        //Assert
-        Assert.Equal(expectedBookingIds, result.Select(b => b.Id));
+
+        var result = await fixture.AnalyticsService
+            .GetBookingsInHallForMonthAsync(chosenHallId, checkDate);
+
+        Assert.Equal(expectedBookingIds, result.Select(booking => booking.Id));
     }
 }
