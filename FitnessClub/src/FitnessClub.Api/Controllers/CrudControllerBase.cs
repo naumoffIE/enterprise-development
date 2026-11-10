@@ -24,6 +24,7 @@ public abstract class CrudControllerBase<TDto, TEditDto>
     /// </summary>
     /// <returns>Список сущностей</returns>
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<IReadOnlyList<TDto>>> GetAll() =>
         Ok(await service.GetAllAsync());
 
@@ -33,6 +34,8 @@ public abstract class CrudControllerBase<TDto, TEditDto>
     /// <param name="id">Идентификатор сущности</param>
     /// <returns>Найденная сущность или ответ 404</returns>
     [HttpGet("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<TDto>> GetById(int id)
     {
         var entity = await service.GetByIdAsync(id);
@@ -46,6 +49,8 @@ public abstract class CrudControllerBase<TDto, TEditDto>
     /// <returns>Созданная сущность</returns>
     [HttpPost]
     [EndpointSummary("Создать сущность")]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<TDto>> Create(TEditDto dto)
     {
         var created = await service.AddAsync(dto);
@@ -60,6 +65,9 @@ public abstract class CrudControllerBase<TDto, TEditDto>
     /// <returns>Обновлённая сущность или ответ 404</returns>
     [HttpPut("{id:int}")]
     [EndpointSummary("Изменить сущность")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<TDto>> Update(int id, TEditDto dto)
     {
         var updated = await service.UpdateAsync(id, dto);
