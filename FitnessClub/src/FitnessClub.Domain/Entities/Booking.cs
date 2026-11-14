@@ -19,7 +19,7 @@ public class Booking : Entity
     /// <summary>
     /// Дата и время тренировки
     /// </summary>
-    public DateTime DateTime { get; set; }
+    public required DateTime DateTime { get; set; }
     /// <summary>
     /// Является ли тренировка пробной
     /// </summary>
@@ -27,5 +27,5 @@ public class Booking : Entity
     /// <summary>
     /// Длительность тренировки 
     /// </summary>
-    public TimeSpan Duration { get; set; }
+    public required TimeSpan Duration { get; set; }
 }

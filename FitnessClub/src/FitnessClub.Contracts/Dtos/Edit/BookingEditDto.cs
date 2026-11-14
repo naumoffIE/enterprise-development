@@ -24,7 +24,7 @@ public record BookingEditDto : IValidatableObject
     /// <summary>
     /// Дата и время тренировки
     /// </summary>
-    public DateTime DateTime { get; init; }
+    public required DateTime DateTime { get; init; }
     /// <summary>
     /// Пробная ли тренировка
     /// </summary>
@@ -33,7 +33,7 @@ public record BookingEditDto : IValidatableObject
     /// Длительность тренировки
     /// </summary>
     [Range(typeof(TimeSpan), "00:30:00", "06:00:00")]
-    public TimeSpan Duration { get; init; }
+    public required TimeSpan Duration { get; init; }
 
     /// <summary>
     /// Проверяет корректность даты тренировки
